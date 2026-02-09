@@ -1,0 +1,18 @@
+/* O container que segura o conteúdo principal */
+.container {
+  width: 80%;            /* Ocupa 80% da largura */
+  max-width: 1200px;     /* Trava em 1200px para não ficar gigante em monitores 4k */
+  margin: 0 auto;        /* Centraliza na tela */
+  padding: 2rem 0;       /* Um respiro em cima e embaixo */
+  min-height: 80vh;      /* Garante que o footer fique lá embaixo */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Ajuste para celular: 80% é muito pouco em tela pequena */
+@media (max-width: 768px) {
+  .container {
+    width: 92%;
+  }
+}

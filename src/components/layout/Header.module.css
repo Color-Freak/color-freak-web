@@ -1,0 +1,58 @@
+.header {
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    /* 16px cima/baixo, 32px lados */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    height: 120px;
+    width: 100dvw;
+}
+
+.logoContainer {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.logoImage {
+    width: 300px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    /* transform: scale(1.2); */
+}
+
+/* ... estilos anteriores ... */
+
+.tagline {
+  color: #666;          /* Um cinza elegante, não preto total */
+  font-size: 1.2rem;   /* Tamanho legível, mas discreto */
+  max-width: 400px;     /* Em telas pequenas, força quebra de linha se necessário */
+  text-align: center;
+}
+
+/* Opcional: Ajuste para celular para não ficar apertado */
+.nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav a:hover {
+    color: #e91e63;
+}
+
+@media (max-width: 600px) {
+  .tagline {
+    font-size: 0.8rem;
+    max-width: 120px;
+  }
+}

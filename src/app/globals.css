@@ -1,14 +1,49 @@
 /* src/app/globals.css */
+
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-style: normal;
+    src: url('/font/Poppins-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-style: normal;
+    src: url('/font/Poppins-Bold.woff2') format('woff2');
+}
+
+
+:root {
+    --cor1: #3b4246;
+    --cor2: #5d686e;
+    --cor3: #dfe1e2;
+    --cor4: #ff4c00;
+    --cor5: #ffbf00;
+    --cor6: #25D366;
+    --cor7: #eff0f0;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
   background-color: #ffffff;
   color: #333;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+.block-scroll-y {
+    overflow-y: hidden;
 }
 
 a {
