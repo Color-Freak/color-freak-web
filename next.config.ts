@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      { hostname: 'placehold.co' },
+      { hostname: 'images.unsplash.com' },
+      { hostname: 'm.media-amazon.com' }, // Imagens da Amazon
+      { hostname: 'seeklogo.com' },       // Logo da Lola
+      { hostname: 'lolacosmetics.com.br' }
+    ],
+  },
 };
 
 export default nextConfig;
