@@ -1,25 +1,22 @@
 import Link from 'next/link'
 import styles from './Header.module.css' // Importação do CSS Module
 import Image from 'next/image'
-import logoImg from '@/assets/cor-raiz-white-logo.png'
+import logoImg from '@/assets/color-freak-logo.png'
 
 export function Header() {
   return (
-    <header className={styles.header}>
+    <header
+      className={styles.header}
+    >
       <div className={styles.logoContainer}>
         <Link href="/">
           <Image
             src={logoImg}
             alt="Logo Color Freak"
-            className={styles.logoImage} // <--- Aqui está o seu controle de estilo!
-            priority // Carrega instantaneamente (importante para header)
+            className={styles.logoImage} 
+            priority 
           />
         </Link>
-      </div>
-
-      {/* Slogan do Blog (Lado Direito) */}
-      <div className={styles.tagline}>
-        Dicas, testes reais e reviews de produtos para cabelo colorido e descolorido.
       </div>
 
       {/* <nav className={styles.nav}>
