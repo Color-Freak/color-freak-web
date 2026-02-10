@@ -2,12 +2,12 @@ version: '3.8'
 services:
   db:
     image: postgres:15
-    container_name: cor_raiz_db
+    container_name: color_freak_db
     restart: always
     environment:
-      POSTGRES_USER: admin_cor_raiz
-      POSTGRES_PASSWORD: senha_raiz_123
-      POSTGRES_DB: cor_raiz_db
+      POSTGRES_USER: admin_color_freak
+      POSTGRES_PASSWORD: senha_freak_123
+      POSTGRES_DB: color_freak_db
     ports:
       - "5432:5432"
     volumes:

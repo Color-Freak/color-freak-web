@@ -18,7 +18,7 @@ async function main() {
   // 2. Criar Usuário (Autora)
   const user = await prisma.user.create({
     data: {
-      email: 'melissa@corraiz.com.br',
+      email: 'melissa@colorfreak.com.br',
       name: 'Melissa Perdomo',
       password: 'senha-super-secreta-hash', 
     },

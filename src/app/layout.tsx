@@ -13,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Cor-Raiz | Cabelo Colorido, Descoloração e Cuidados Reais",
+  title: "Color Freak | Cabelo Colorido, Descoloração e Cuidados Reais",
   description:
     "Conteúdo técnico e real sobre cabelo colorido, descoloração global, cronograma capilar e cuidados que funcionam na prática.",
 };

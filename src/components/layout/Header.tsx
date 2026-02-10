@@ -10,7 +10,7 @@ export function Header() {
         <Link href="/">
           <Image
             src={logoImg}
-            alt="Logo CorRaiz"
+            alt="Logo Color Freak"
             className={styles.logoImage} // <--- Aqui está o seu controle de estilo!
             priority // Carrega instantaneamente (importante para header)
           />
