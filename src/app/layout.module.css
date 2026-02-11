@@ -1,7 +1,7 @@
 /* O main agora ocupa a tela toda, permitindo que o Banner estique */
 .main {
   width: 100%;
-  min-height: 80vh;
+  height: auto;
   display: flex;
   flex-direction: column;
 }

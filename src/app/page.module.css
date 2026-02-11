@@ -1,0 +1,18 @@
+
+/* O H1 específico da Home */
+.homeTitle {
+  font-size: 1.6rem;    /* Tamanho grande */
+  font-weight: 700;     /* Negrito da fonte Poppins */
+  color: var(--cor1);
+  margin-top: 0;
+  margin-bottom: 0.5rem; /* Espacinho para o subtítulo */
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Responsividade: Diminui um pouco no celular */
+@media (max-width: 768px) {
+  .homeTitle {
+    font-size: 2rem;
+  }
+}
