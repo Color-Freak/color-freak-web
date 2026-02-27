@@ -13,6 +13,25 @@
   transform: translateY(-4px);
 }
 
+.content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between; /* ADICIONE ISTO: Separa o bloco de texto do botão */
+}
+
+/* NOVA CLASSE: O "pacote" que segura os textos juntos no topo */
+.textGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Garante que os links não fiquem sublinhados nativamente */
+.textGroup a {
+  text-decoration: none;
+}
+
 /* OBRIGATÓRIO PARA A IMAGEM FUNCIONAR */
 .imageWrapper {
   position: relative; 
@@ -49,10 +68,10 @@
 }
 
 .meta {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: var(--cor2); /* Cinza Médio */
-  margin-bottom: 1rem;
   font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 .author {
@@ -60,10 +79,10 @@
   font-weight: 600;
 }
 
-.excerpt {
+.subtitle {
   font-size: 0.9rem;
-  color: var(--cor2); /* Cinza Médio */
-  margin-bottom: 1.5rem;
+  color: var(--cor2);
+  margin-bottom: 0.5rem;
   line-height: 1.6;
   
   display: -webkit-box;

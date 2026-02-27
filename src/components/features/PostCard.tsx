@@ -22,7 +22,7 @@ export function PostCard({ post }: PostCardProps) {
                         src={post.imageUrl}
                         alt={post.title}
                         fill
-                        className={styles.image} // Usando o CSS Module ao invés de string solta
+                        className={styles.image}
                     />
                 ) : (
                     <div style={{ width: '100%', height: '100%', background: '#eee' }} />
@@ -30,28 +30,29 @@ export function PostCard({ post }: PostCardProps) {
             </Link>
 
             <div className={styles.content}>
-                <Link href={`/blog/${post.slug}`}>
-                    <h3 className={styles.title}>{post.title}</h3>
-                </Link>
 
-                {/* Linha de Meta: "by Autor / Data" */}
-                <Link href={`/blog/${post.slug}`}>
-                    <div className={styles.meta}>
-                        por <span className={styles.author}>{post.author?.name || 'Redação'}</span> / {formattedDate}
-                    </div>
-                </Link>
+                <div className={styles.textGroup}>
+                    <Link href={`/blog/${post.slug}`}>
+                        <h3 className={styles.title}>{post.title}</h3>
+                    </Link>
 
-                {/* Resumo ou subtítulo */}
-                <Link href={`/blog/${post.slug}`}>
-                    <p className={styles.excerpt}>
-                        {post.subtitle}
-                    </p>
-                </Link>
+                    <Link href={`/blog/${post.slug}`}>
+                        <p className={styles.subtitle}>
+                            {post.subtitle}
+                        </p>
+                    </Link>
 
-                {/* Botão Leia Mais */}
+                    <Link href={`/blog/${post.slug}`}>
+                        <div className={styles.meta}>
+                            por <span className={styles.author}>{post.author?.name || 'Redação'}</span> - {formattedDate}
+                        </div>
+                    </Link>
+                </div>
+
                 <Link href={`/blog/${post.slug}`} className={styles.button}>
                     Ler mais
                 </Link>
+
             </div>
         </div>
     )

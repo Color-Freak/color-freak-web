@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import styles from './Sidebar.module.css'
+import styles from './SideBar.module.css'
 import { Post } from '@prisma/client'
 
-interface SidebarProps {
+interface SideBarProps {
   latestPosts: Post[] 
 }
 
-export function Sidebar({ latestPosts }: SidebarProps) {
+export function SideBar({ latestPosts }: SideBarProps) {
   return (
     <aside className={styles.sidebar}>
       <h3 className={styles.title}>Últimas Postagens</h3>

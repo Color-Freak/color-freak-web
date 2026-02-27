@@ -1,16 +1,28 @@
 import { prisma } from '../lib/prisma';
+import { Prisma } from '@prisma/client';
 
-export async function getPosts(page: number = 1, limit: number = 9) {
-  // Matemática simples: se estou na página 2 e o limite é 9, devo pular os 9 primeiros.
+// Adicionamos o search no parâmetro
+export async function getPosts(page: number = 1, limit: number = 9, search?: string) {
   const skip = (page - 1) * limit;
 
-  // Promise.all executa as duas buscas no banco ao mesmo tempo (mais rápido)
+  // Montamos a condição do banco de dados tipada corretamente
+  const whereCondition: Prisma.PostWhereInput = {
+    published: true,
+    // Se existir um 'search', adiciona a condição OR (Busca no título OU no conteúdo)
+    ...(search && {
+      OR: [
+        { title: { contains: search, mode: 'insensitive' } },
+        { subtitle: { contains: search, mode: 'insensitive' } },
+        { content: { contains: search, mode: 'insensitive' } },
+      ],
+    }),
+  };
+
   const [posts, totalPosts] = await Promise.all([
-    // Busca 1: Pega apenas os 9 posts da página atual
     prisma.post.findMany({
       skip: skip,
       take: limit,
-      where: { published: true },
+      where: whereCondition, // Passamos a condição montada aqui
       include: {
         partner: true,
         categories: true,
@@ -18,14 +30,11 @@ export async function getPosts(page: number = 1, limit: number = 9) {
       },
       orderBy: { createdAt: 'desc' },
     }),
-
-    // Busca 2: Conta quantos posts publicados existem no total
     prisma.post.count({
-      where: { published: true }
+      where: whereCondition // Passamos a mesma condição para a contagem bater certo
     })
   ]);
 
-  // Math.ceil arredonda para cima. Ex: 12 posts / 9 = 1.33 (2 páginas)
   const totalPages = Math.ceil(totalPosts / limit);
 
   return { posts, totalPages };

@@ -19,7 +19,7 @@ async function main() {
     data: {
       email: 'melissa@colorfreak.com.br',
       name: 'Melissa Perdomo',
-      password: 'senha-super-secreta-hash', 
+      password: 'senha-super-secreta-hash',
     },
   })
 
@@ -76,8 +76,24 @@ async function main() {
     }
   })
 
-  // 6. Criar os 3 Posts Principais
-  
+  // 7. Gerar 10 posts dinâmicos para testar paginação (Todos True)
+  console.log('🔄 Gerando posts adicionais para paginação...')
+
+  for (let i = 1; i <= 10; i++) {
+    await prisma.post.create({
+      data: {
+        title: `Teste de Paginação - Post Fictício ${i}`,
+        subtitle: `Este é o post número ${i} gerado automaticamente para preencher o grid do site.`,
+        slug: `post-ficticio-paginacao-${i}`,
+        content: `Conteúdo de teste para a paginação. Post número ${i}.`,
+        imageUrl: `https://img.freepik.com/fotos-gratis/woman-using-hair-product-side-view_23-2149659594.jpg`,
+        published: true,
+        authorId: user.id,
+        categories: { connect: [{ id: catCronograma.id }] }
+      }
+    })
+  }
+
   // Post 1 (True)
   await prisma.post.create({
     data: {
@@ -98,7 +114,7 @@ async function main() {
   await prisma.post.create({
     data: {
       title: 'Como salvar o cabelo pós-descoloração',
-      subtitle: 'O guia definitivo para recuperar a elasticidade.',
+      subtitle: 'Você já ouviu falar em capilaridade? Entenda como fazer o protocolo pós química em casa e recupere a saúde do fio.',
       slug: 'recuperar-cabelo-pos-descoloracao',
       content: 'Conteúdo sobre reconstrução ácida...',
       imageUrl: 'https://img.freepik.com/fotos-gratis/beautiful-blond-girl-in-dress-playing-with-hair-and-smiling-looking-thoughtful-standing-on-white-copy-space_176420-41096.jpg',
@@ -123,24 +139,6 @@ async function main() {
       products: { connect: [{ id: prodOleo.id }] }
     }
   })
-
-  // 7. Gerar 10 posts dinâmicos para testar paginação (Todos True)
-  console.log('🔄 Gerando posts adicionais para paginação...')
-  
-  for (let i = 1; i <= 10; i++) {
-    await prisma.post.create({
-      data: {
-        title: `Teste de Paginação - Post Fictício ${i}`,
-        subtitle: `Este é o post número ${i} gerado automaticamente para preencher o grid do site.`,
-        slug: `post-ficticio-paginacao-${i}`,
-        content: `Conteúdo de teste para a paginação. Post número ${i}.`,
-        imageUrl: `https://img.freepik.com/fotos-gratis/woman-using-hair-product-side-view_23-2149659594.jpg`,
-        published: true,
-        authorId: user.id,
-        categories: { connect: [{ id: catCronograma.id }] }
-      }
-    })
-  }
 
   console.log('✅ Seed finalizado com sucesso! Total de 13 posts criados (12 publicados, 1 rascunho).')
 }

@@ -8,8 +8,8 @@
 
 /* Criamos essa classe para usar dentro das páginas quando quisermos centralizar */
 .contentContainer {
-  width: 92%;          
-  max-width: 1200px;
+  width: 90%;          
+  max-width: 1300px;
   margin: 0 auto;        /* Centraliza */
   padding: 2rem 0;       /* O respiro vertical */
   display: flex;
