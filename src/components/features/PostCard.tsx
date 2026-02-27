@@ -44,7 +44,7 @@ export function PostCard({ post }: PostCardProps) {
 
                     <Link href={`/blog/${post.slug}`}>
                         <div className={styles.meta}>
-                            por <span className={styles.author}>{post.author?.name || 'Redação'}</span> - {formattedDate}
+                            {formattedDate}
                         </div>
                     </Link>
                 </div>

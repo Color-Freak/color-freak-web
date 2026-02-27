@@ -1,7 +1,6 @@
 .sidebar {
   width: 300px;
   flex-shrink: 0; /* Impede que o flexbox esprema essa coluna */
-  top: 2rem; 
   position: relative;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;

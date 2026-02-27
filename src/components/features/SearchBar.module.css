@@ -2,8 +2,6 @@
   display: flex;
   width: 100%;
   max-width: 600px;
-  /* Limita a largura para não ficar esticado demais */
-  margin-bottom: 2rem;
   margin: auto;
 }
 

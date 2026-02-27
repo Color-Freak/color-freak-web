@@ -49,3 +49,19 @@ export async function getLatestPosts(limit: number = 6) {
 
   return latestPosts;
 }
+
+export async function getPostBySlug(slug: string) {
+  const post = await prisma.post.findUnique({
+    where: { 
+      slug: slug 
+    },
+    include: {
+      author: true,
+      categories: true,
+      partner: true,
+      products: true, // Trazemos os produtos indicados também
+    },
+  });
+
+  return post;
+}

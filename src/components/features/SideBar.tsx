@@ -9,7 +9,7 @@ interface SideBarProps {
 export function SideBar({ latestPosts }: SideBarProps) {
   return (
     <aside className={styles.sidebar}>
-      <h3 className={styles.title}>Últimas Postagens</h3>
+      <h3 className={styles.title}>Últimas Matérias</h3>
       
       <ul className={styles.list}>
         {latestPosts.map((post) => (
