@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
-// 1. Importe a função dos últimos posts e o componente Sidebar
 import { getPostBySlug, getLatestPosts } from '@/services/postService'
 import { SideBar } from '@/components/features/SideBar'
+import { ProductCard } from '@/components/features/ProductCard'
 
 import layoutStyles from '@/app/layout.module.css'
 import styles from './post.module.css'
@@ -68,18 +68,14 @@ export default async function BlogPostPage({
                     {/* --- COLUNA DIREITA: Posts + Produtos --- */}
                     <aside className={styles.rightColumn}>
 
-                        {/* 3. Renderiza a Sidebar de matérias recentes no topo */}
                         <SideBar latestPosts={latestPosts} />
 
-                        {/* 4. Bloco de Produtos logo abaixo */}
                         <div>
-                            <h3 className={styles.sidebarTitle}>Produtos Indicados</h3>
-
-                            {post.products && post.products.length > 0 ? (
-                                <p>Tem {post.products.length} produto(s) para mostrar aqui!</p>
-                            ) : (
-                                <p style={{ fontSize: '0.9rem', color: 'var(--cor2)' }}>Nenhum produto indicado nesta matéria.</p>
-                            )}
+                            <div className={styles.productList}>
+                                {post.products?.map((product) => (
+                                    <ProductCard key={product.id} product={product} />
+                                ))}
+                            </div>
                         </div>
 
                     </aside>

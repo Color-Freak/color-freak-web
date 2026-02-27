@@ -106,7 +106,7 @@ async function main() {
       authorId: user.id,
       partnerId: lola.id,
       categories: { connect: [{ id: catProdutos.id }] },
-      products: { connect: [{ id: prodMorte.id }] }
+      products: { connect: [{ id: prodMorte.id }, { id: prodDanos.id }] }
     }
   })
 
@@ -121,7 +121,7 @@ async function main() {
       published: true,
       authorId: user.id,
       categories: { connect: [{ id: catCronograma.id }, { id: catDicas.id }] },
-      products: { connect: [{ id: prodDanos.id }] }
+      products: { connect: [{ id: prodDanos.id }, { id: prodMorte.id }] }
     }
   })
 
