@@ -1,0 +1,44 @@
+.sidebar {
+  width: 250px;
+  flex-shrink: 0; /* Impede que o flexbox esprema essa coluna */
+  top: 2rem; 
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--cor1);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--cor2); /* A linha preta igual da sua imagem */
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Espaço entre os links */
+}
+
+.link {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: var(--cor2);
+  line-height: 1.4;
+  transition: color 0.2s;
+  display: block;
+}
+
+.link:hover {
+  color: var(--cor4); /* Fica roxo ao passar o mouse */
+  font-weight: 600;
+}

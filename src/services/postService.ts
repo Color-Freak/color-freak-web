@@ -18,7 +18,7 @@ export async function getPosts(page: number = 1, limit: number = 9) {
       },
       orderBy: { createdAt: 'desc' },
     }),
-    
+
     // Busca 2: Conta quantos posts publicados existem no total
     prisma.post.count({
       where: { published: true }
@@ -29,4 +29,14 @@ export async function getPosts(page: number = 1, limit: number = 9) {
   const totalPages = Math.ceil(totalPosts / limit);
 
   return { posts, totalPages };
+}
+
+export async function getLatestPosts(limit: number = 6) {
+  const latestPosts = await prisma.post.findMany({
+    take: limit, // Traz apenas a quantidade necessária (melhor performance)
+    where: { published: true },
+    orderBy: { createdAt: 'desc' }, // Garante que são os mais recentes
+  });
+
+  return latestPosts;
 }

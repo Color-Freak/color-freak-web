@@ -18,7 +18,7 @@
   position: relative; 
   display: block;     /* Como é uma tag <a>, precisa se comportar como bloco */
   width: 100%;
-  height: 200px;      /* Fixa a altura da imagem para todos os cards ficarem iguais */
+  height: 250px;      /* Fixa a altura da imagem para todos os cards ficarem iguais */
   background-color: var(--cor0); /* Fundo enquanto carrega */
 }
 
