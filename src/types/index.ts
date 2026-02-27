@@ -6,9 +6,8 @@ import { Prisma } from '@prisma/client'
  */
 export type PostWithDetails = Prisma.PostGetPayload<{
   include: {
-    partner: true
-    categories: true
+    partner: true;
+    categories: true;
+    author: true;
   }
 }>
-
-// Se no futuro tivermos "ProductWithPartner", colocaremos aqui também.

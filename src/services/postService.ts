@@ -2,15 +2,17 @@ import { prisma } from '../lib/prisma';
 
 export async function getPosts() {
   const posts = await prisma.post.findMany({
+    take: 9,
     where: {
-      published: true, // Só mostra o que está publicado
+      published: true,
     },
     include: {
-      partner: true, // Faz o join com parceiros
-      categories: true, // Faz o join com categorias
+      partner: true,
+      categories: true,
+      author: true,
     },
     orderBy: {
-      createdAt: 'desc', // Mais recentes primeiro
+      createdAt: 'desc',
     },
   })
 

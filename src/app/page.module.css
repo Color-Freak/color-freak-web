@@ -10,6 +10,13 @@
   text-align: center;
 }
 
+.grid {
+  display: flex;
+  flex-wrap: wrap; /* A regra de ouro: permite que os cards pulem de linha */
+  gap: 2rem;       /* O respiro exato entre eles */
+  margin-top: 2rem;
+}
+
 /* Responsividade: Diminui um pouco no celular */
 @media (max-width: 768px) {
   .homeTitle {

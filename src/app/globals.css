@@ -14,12 +14,11 @@
   src: url('/font/Poppins-Bold.woff2') format('woff2');
 }
 
-
 :root {
   --cor0: #eff0f0;
   --cor1: #3b4246;
   --cor2: #5d686e;
-  --cor3: #EF6FBA;
+  --cor3: #EE40A2;
   --cor4: #7B56C7;
   --cor5: #27AADE;
   --cor6: #56D9B2;
@@ -35,7 +34,7 @@
 
 body {
   background-color: #ffffff;
-  color: #333;
+  color: var(--cor1);
   overflow-x: hidden;
   min-height: 100vh;
   display: flex;

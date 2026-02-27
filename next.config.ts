@@ -7,7 +7,8 @@ const nextConfig: NextConfig = {
       { hostname: 'images.unsplash.com' },
       { hostname: 'm.media-amazon.com' }, // Imagens da Amazon
       { hostname: 'seeklogo.com' },       // Logo da Lola
-      { hostname: 'lolacosmetics.com.br' }
+      { hostname: 'lolacosmetics.com.br' },
+      { hostname: 'img.freepik.com' },
     ],
   },
 };
