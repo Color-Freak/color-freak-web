@@ -100,7 +100,50 @@
 }
 
 .productList {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* --- ESTILOS PARA O MARKDOWN GERADO --- */
+
+.content p {
+    margin-bottom: 1.5rem;
+}
+
+.content h2,
+.content h3 {
+    color: var(--cor1);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.content h2 {
+    font-size: 1.8rem;
+}
+
+.content h3 {
+    font-size: 1.4rem;
+}
+
+.content ul,
+.content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.content li {
+    margin-bottom: 0.5rem;
+}
+
+.content a {
+    color: var(--cor4);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.content strong {
+    color: var(--cor1);
+    font-weight: 700;
 }

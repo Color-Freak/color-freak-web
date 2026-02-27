@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
+import ReactMarkdown from 'react-markdown' // 1. Importe a biblioteca
 import { getPostBySlug, getLatestPosts } from '@/services/postService'
 import { SideBar } from '@/components/features/SideBar'
 import { ProductCard } from '@/components/features/ProductCard'
@@ -14,7 +15,6 @@ export default async function BlogPostPage({
 }) {
     const resolvedParams = await params;
 
-    // 2. Executa as duas buscas ao mesmo tempo no banco de dados
     const [post, latestPosts] = await Promise.all([
         getPostBySlug(resolvedParams.slug),
         getLatestPosts(5)
@@ -33,10 +33,8 @@ export default async function BlogPostPage({
     return (
         <div className={layoutStyles.contentContainer}>
             <div className={styles.container}>
-
                 <div className={styles.layout}>
 
-                    {/* --- COLUNA ESQUERDA: A matéria inteira --- */}
                     <article className={styles.mainContent}>
 
                         <header className={styles.header}>
@@ -59,17 +57,23 @@ export default async function BlogPostPage({
                             </div>
                         )}
 
+                        {/* 2. Envolva o conteúdo com o ReactMarkdown */}
+                        {/* 2. Envolva o conteúdo com o ReactMarkdown */}
                         <div className={styles.content}>
-                            {post.content}
+                            <ReactMarkdown>
+                                {`Aqui vai o texto introdutório.
+
+# Este é um Título Real
+## E aqui um subtítulo
+
+Agora sim o Markdown consegue entender, porque demos um "Enter" antes das hashtags.`}
+                            </ReactMarkdown>
                         </div>
 
                     </article>
 
-                    {/* --- COLUNA DIREITA: Posts + Produtos --- */}
                     <aside className={styles.rightColumn}>
-
                         <SideBar latestPosts={latestPosts} />
-
                         <div>
                             <div className={styles.productList}>
                                 {post.products?.map((product) => (
@@ -77,11 +81,9 @@ export default async function BlogPostPage({
                                 ))}
                             </div>
                         </div>
-
                     </aside>
 
                 </div>
-
             </div>
         </div>
     )
