@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.button {
+  padding: 0.5rem 1.2rem;
+  background-color: transparent;
+  color: var(--cor1);
+  border-radius: 4px;
+  font-weight: 700;  
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.button:hover {
+  background-color: var(--cor4);
+  color: white;
+}
+
+/* Quando não tem página anterior ou próxima, o botão fica cinza e não clicável */
+.disabled {
+  border-color: var(--cor0);
+  color: var(--cor2);
+  pointer-events: none;
+}
+
+.info {
+  font-weight: normal;
+  color: var(--cor1);
+}

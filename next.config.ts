@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
       { hostname: 'seeklogo.com' },       // Logo da Lola
       { hostname: 'lolacosmetics.com.br' },
       { hostname: 'img.freepik.com' },
+      { hostname: 'scontent-gru1-2.cdninstagram.com' },
     ],
   },
 };
