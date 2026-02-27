@@ -52,8 +52,8 @@ export async function getLatestPosts(limit: number = 6) {
 
 export async function getPostBySlug(slug: string) {
   const post = await prisma.post.findUnique({
-    where: { 
-      slug: slug 
+    where: {
+      slug: slug
     },
     include: {
       author: true,
@@ -64,4 +64,50 @@ export async function getPostBySlug(slug: string) {
   });
 
   return post;
+}
+
+// Adicione estas duas funções para buscar as opções disponíveis
+export async function getAllCategories() {
+  return prisma.category.findMany();
+}
+
+export async function getAllProducts() {
+  return prisma.product.findMany();
+}
+
+export async function getAllPartners() {
+  return prisma.partner.findMany();
+}
+
+// Atualize o createPost para receber os arrays de categorias e produtos
+export async function createPost(data: {
+  title: string;
+  subtitle: string;
+  slug: string;
+  imageUrl?: string;
+  content: string;
+  categoryIds: string[]; // <-- NOVO
+  productIds: string[];  // <-- NOVO
+  partnerId?: string;
+}) {
+  const newPost = await prisma.post.create({
+    data: {
+      title: data.title,
+      subtitle: data.subtitle,
+      slug: data.slug,
+      imageUrl: data.imageUrl,
+      content: data.content,
+      published: true,
+      authorId: "d7a8b9c0-1234-5678-abcd-ef1234567890", // O ID hardcoded que usamos antes
+      partnerId: data.partnerId || null,
+      categories: {
+        connect: data.categoryIds.map(id => ({ id }))
+      },
+      products: {
+        connect: data.productIds.map(id => ({ id }))
+      }
+    },
+  });
+
+  return newPost;
 }

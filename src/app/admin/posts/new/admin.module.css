@@ -1,0 +1,79 @@
+.container {
+  width: 100%;
+  max-width: 1300px; /* Aumentamos de 700px para 1000px para acabar com a "tripa" */
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+.form {
+  width: 100%; /* Garante que o formulário ocupe toda a largura disponível do container */
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: white;
+  padding: 2.5rem; /* Aumentei levemente o padding interno para dar mais respiro aos inputs */
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.8rem;
+  color: var(--cor1);
+  margin-bottom: 1.5rem;
+}
+
+/* NOVA CLASSE: Para colocar inputs lado a lado */
+.row {
+  display: flex;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1; /* O segredo aqui: faz os filhos do .row dividirem o espaço igualmente */
+}
+
+.label {
+  font-weight: 700;
+  color: var(--cor1);
+  font-size: 0.8rem; /* Mais delicado */
+  text-transform: uppercase;
+}
+
+.input, .textarea {
+  padding: 0.6rem 0.8rem; /* Reduzi a altura da caixa de texto */
+  border: 1px solid var(--cor2);
+  border-radius: 4px;
+  font-size: 0.9rem; /* Fonte alinhada com os textos de meta da Home */
+  color: var(--cor1);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus, .textarea:focus {
+  border-color: var(--cor4);
+}
+
+/* Botão Menor e Alinhado à Esquerda */
+.button {
+  padding: 0.6rem 1.5rem; /* Proporção igual ao botão "Ler Mais" */
+  background-color: var(--cor4);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+  align-self: flex-start; /* Impede que o botão estique e ocupe a largura inteira da tela */
+}
+
+.button:hover {
+  background-color: var(--cor1);
+}
