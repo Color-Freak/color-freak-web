@@ -1,0 +1,82 @@
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: var(--cor1);
+}
+
+.newButton {
+  padding: 0.6rem 1.2rem;
+  background-color: var(--cor4);
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.newButton:hover {
+  background-color: var(--cor1);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.table th, .table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--cor2);
+  color: var(--cor1);
+}
+
+.table th {
+  background-color: #fafafa;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.editBtn, .deleteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+.editBtn {
+  color: var(--cor4);
+}
+
+.deleteBtn {
+  color: #e74c3c; /* Vermelho para indicar perigo */
+}

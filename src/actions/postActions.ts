@@ -2,6 +2,8 @@
 
 import { redirect } from 'next/navigation'
 import { createPost } from '@/services/postService'
+import { revalidatePath } from 'next/cache';
+import { deletePostById } from '@/services/postService';
 
 export async function handleSavePost(formData: FormData) {
   const title = formData.get('title') as string;
@@ -9,7 +11,7 @@ export async function handleSavePost(formData: FormData) {
   const slug = formData.get('slug') as string;
   const imageUrl = formData.get('imageUrl') as string;
   const content = formData.get('content') as string;
-  
+
   // Captura todos os checkboxes marcados (retorna um array de strings com os IDs)
   const categoryIds = formData.getAll('categoryIds') as string[];
   const productIds = formData.getAll('productIds') as string[];
@@ -26,5 +28,11 @@ export async function handleSavePost(formData: FormData) {
     partnerId: partnerId ? partnerId : undefined
   });
 
-  redirect('/');
+  redirect('/admin/posts');
+}
+
+export async function handleDeletePost(id: string) {
+  await deletePostById(id);
+  // Limpa o cache para a tabela atualizar imediatamente na tela
+  revalidatePath('/admin/posts');
 }

@@ -1,14 +1,11 @@
 import { prisma } from '../lib/prisma';
 import { Prisma } from '@prisma/client';
 
-// Adicionamos o search no parâmetro
 export async function getPosts(page: number = 1, limit: number = 9, search?: string) {
   const skip = (page - 1) * limit;
 
-  // Montamos a condição do banco de dados tipada corretamente
   const whereCondition: Prisma.PostWhereInput = {
     published: true,
-    // Se existir um 'search', adiciona a condição OR (Busca no título OU no conteúdo)
     ...(search && {
       OR: [
         { title: { contains: search, mode: 'insensitive' } },
@@ -66,7 +63,6 @@ export async function getPostBySlug(slug: string) {
   return post;
 }
 
-// Adicione estas duas funções para buscar as opções disponíveis
 export async function getAllCategories() {
   return prisma.category.findMany();
 }
@@ -110,4 +106,25 @@ export async function createPost(data: {
   });
 
   return newPost;
+}
+
+// Busca as matérias ordenadas da mais recente para a mais antiga
+export async function getAdminPosts() {
+  return prisma.post.findMany({
+    orderBy: { createdAt: 'desc' },
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      published: true,
+      createdAt: true
+    }
+  });
+}
+
+// Deleta a matéria pelo ID
+export async function deletePostById(id: string) {
+  return prisma.post.delete({
+    where: { id }
+  });
 }
