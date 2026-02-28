@@ -2,15 +2,15 @@
 
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
+import Select from 'react-select' // 1. Importação do React Select adicionada
 import { handleSavePost } from '@/actions/postActions'
-// 1. Importamos os tipos oficiais do seu banco de dados
 import { Category, Product, Partner } from '@prisma/client' 
 import styles from './admin.module.css'
 import layoutStyles from '@/app/layout.module.css'
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false })
 
-// 2. Definimos a Interface com os tipos reais
+// Definimos a Interface com os tipos reais
 interface PostFormProps {
     categories: Category[];
     products: Product[];
@@ -19,6 +19,10 @@ interface PostFormProps {
 
 export function PostForm({ categories, products, partners }: PostFormProps) {
     const [content, setContent] = useState('');
+
+    // 2. Transformamos as listas do banco no formato { value, label } que o react-select exige
+    const categoryOptions = categories.map(cat => ({ value: cat.id, label: cat.name }));
+    const productOptions = products.map(prod => ({ value: prod.id, label: prod.name }));
 
     return (
         <div className={layoutStyles.contentContainer}>
@@ -61,30 +65,26 @@ export function PostForm({ categories, products, partners }: PostFormProps) {
                             </select>
                         </div>
 
-                        {/* Categorias */}
+                        {/* Categorias usando React Select */}
                         <div className={styles.inputGroup}>
                             <label className={styles.label}>Categorias</label>
-                            <div className={styles.checkboxGrid}>
-                                {categories.map((cat) => (
-                                    <label key={cat.id} className={styles.checkboxItem}>
-                                        <input type="checkbox" name="categoryIds" value={cat.id} />
-                                        {cat.name}
-                                    </label>
-                                ))}
-                            </div>
+                            <Select
+                                isMulti
+                                name="categoryIds"
+                                options={categoryOptions}
+                                placeholder="Selecione as categorias..."
+                            />
                         </div>
 
-                        {/* Produtos */}
+                        {/* Produtos usando React Select */}
                         <div className={styles.inputGroup}>
                             <label className={styles.label}>Produtos Indicados</label>
-                            <div className={styles.checkboxGrid}>
-                                {products.map((prod) => (
-                                    <label key={prod.id} className={styles.checkboxItem}>
-                                        <input type="checkbox" name="productIds" value={prod.id} />
-                                        {prod.name}
-                                    </label>
-                                ))}
-                            </div>
+                            <Select
+                                isMulti
+                                name="productIds"
+                                options={productOptions}
+                                placeholder="Selecione os produtos..."
+                            />
                         </div>
 
                         <div className={styles.inputGroup}>
