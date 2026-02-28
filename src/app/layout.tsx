@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "../components/layout/Header";
-import { Footer } from "../components/layout/Footer";
-import styles from "./layout.module.css";
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
   weight: ["400", "700"],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-poppins", // Cria uma variável CSS para usarmos se precisar
+  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
@@ -26,13 +23,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={poppins.className} suppressHydrationWarning={true}>
-        <Header />
-
-        <main className={styles.main}>
-          {children}
-        </main>
-
-        <Footer />
+        {/* O Header, a tag main e o Footer saíram daqui */}
+        {children}
       </body>
     </html>
   );

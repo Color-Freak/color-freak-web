@@ -5,7 +5,7 @@ import { SideBar } from '@/components/features/SideBar'
 import { SearchBar } from '@/components/features/SearchBar' // <-- Importe a barra
 import { PostWithDetails } from '@/types'
 
-import styles from './page.module.css'
+import styles from '@/app/page.module.css'
 import layoutStyles from '@/app/layout.module.css'
 
 export default async function Home({

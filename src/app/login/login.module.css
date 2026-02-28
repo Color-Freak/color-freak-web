@@ -1,0 +1,88 @@
+.wrapper {
+  /* Ocupa a tela inteira e define a imagem de fundo */
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('@/assets/bgpuro1.png'); /* Coloque sua imagem na pasta public */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Centraliza a caixinha do login */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 3rem 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Sombra um pouco mais forte para destacar do fundo */
+  
+  /* Flexbox para alinhar o logo e o form */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logoContainer {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-weight: 700;
+  color: var(--cor1);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.input {
+  padding: 0.8rem;
+  border: 1px solid var(--cor2);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: var(--cor1);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: var(--cor4);
+}
+
+.button {
+  padding: 1rem;
+  background-color: var(--cor4);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: var(--cor1);
+}
