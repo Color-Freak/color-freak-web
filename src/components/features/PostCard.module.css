@@ -1,5 +1,5 @@
 .card {
-  width: calc((100% / 3) - 1.34rem);   
+  width: calc((100% / 3) - 1.34rem);
   background: white;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -18,27 +18,24 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  justify-content: space-between; /* ADICIONE ISTO: Separa o bloco de texto do botão */
+  justify-content: space-between;
 }
 
-/* NOVA CLASSE: O "pacote" que segura os textos juntos no topo */
 .textGroup {
   display: flex;
   flex-direction: column;
 }
 
-/* Garante que os links não fiquem sublinhados nativamente */
 .textGroup a {
   text-decoration: none;
 }
 
-/* OBRIGATÓRIO PARA A IMAGEM FUNCIONAR */
 .imageWrapper {
-  position: relative; 
-  display: block;     /* Como é uma tag <a>, precisa se comportar como bloco */
+  position: relative;
+  display: block;
   width: 100%;
-  height: 250px;      /* Fixa a altura da imagem para todos os cards ficarem iguais */
-  background-color: var(--cor0); /* Fundo enquanto carrega */
+  height: 250px;
+  background-color: var(--cor0);
 }
 
 .image {
@@ -56,7 +53,8 @@
 .title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--cor1); /* Cinza Escuro */
+  color: var(--cor1);
+  /* Cinza Escuro */
   margin-bottom: 0.5rem;
   line-height: 1.4;
   transition: color 0.2s;
@@ -69,13 +67,15 @@
 
 .meta {
   font-size: 0.65rem;
-  color: var(--cor2); /* Cinza Médio */
+  color: var(--cor2);
+  /* Cinza Médio */
   font-weight: 500;
   margin-bottom: 1rem;
 }
 
 .author {
-  color: var(--cor4); /* Nome do autor em Roxo */
+  color: var(--cor4);
+  /* Nome do autor em Roxo */
   font-weight: 600;
 }
 
@@ -84,10 +84,10 @@
   color: var(--cor2);
   margin-bottom: 0.5rem;
   line-height: 1.6;
-  
+
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -96,11 +96,13 @@
 .button {
   margin-top: auto;
   align-self: flex-start;
-  
+
   background: transparent;
-  border: 2px solid var(--cor4); /* Borda Roxa */
-  color: var(--cor4);            /* Texto Roxo */
-  
+  border: 2px solid var(--cor4);
+  /* Borda Roxa */
+  color: var(--cor4);
+  /* Texto Roxo */
+
   padding: 0.5rem 1.2rem;
   border-radius: 4px;
   font-weight: 700;
@@ -112,8 +114,10 @@
 }
 
 .button:hover {
-  background-color: var(--cor4); /* Fundo Roxo */
-  color: white;                  /* Texto Branco */
+  background-color: var(--cor4);
+  /* Fundo Roxo */
+  color: white;
+  /* Texto Branco */
   box-shadow: 0 4px 10px rgba(123, 86, 199, 0.3);
 }
 

@@ -36,3 +36,4 @@ export async function handleDeletePost(id: string) {
   // Limpa o cache para a tabela atualizar imediatamente na tela
   revalidatePath('/admin/posts');
 }
+

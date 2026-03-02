@@ -108,23 +108,82 @@ export async function createPost(data: {
   return newPost;
 }
 
-// Busca as matérias ordenadas da mais recente para a mais antiga
-export async function getAdminPosts() {
-  return prisma.post.findMany({
-    orderBy: { createdAt: 'desc' },
-    select: {
-      id: true,
-      title: true,
-      slug: true,
-      published: true,
-      createdAt: true
-    }
-  });
+export async function getAdminPosts(page: number = 1, limit: number = 10) {
+  const skip = (page - 1) * limit;
+
+  // Promise.all executa as duas consultas no banco ao mesmo tempo para ganhar velocidade
+  const [posts, total] = await Promise.all([
+    prisma.post.findMany({
+      skip,
+      take: limit,
+      orderBy: { createdAt: 'desc' },
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        published: true,
+        createdAt: true
+      }
+    }),
+    prisma.post.count() // Conta o total real de matérias no banco
+  ]);
+
+  const totalPages = Math.ceil(total / limit);
+
+  return {
+    posts,
+    totalPages,
+    currentPage: page
+  };
 }
 
 // Deleta a matéria pelo ID
 export async function deletePostById(id: string) {
   return prisma.post.delete({
     where: { id }
+  });
+}
+
+export async function getPostById(id: string) {
+  return prisma.post.findUnique({
+    where: { id },
+    include: {
+      categories: true,
+      products: true,
+    }
+  });
+}
+
+// Tipagem simplificada baseada no que a Action envia
+type PostUpdateData = {
+  title: string;
+  subtitle: string;
+  slug: string;
+  imageUrl?: string;
+  content: string;
+  categoryIds: string[];
+  productIds: string[];
+  partnerId?: string;
+};
+
+export async function updatePost(id: string, data: PostUpdateData) {
+  return prisma.post.update({
+    where: { id },
+    data: {
+      title: data.title,
+      subtitle: data.subtitle,
+      slug: data.slug,
+      imageUrl: data.imageUrl,
+      content: data.content,
+      partnerId: data.partnerId,
+
+      // O 'set' apaga as relações antigas e cria as novas exatamente como vieram do form
+      categories: {
+        set: data.categoryIds.map(categoryId => ({ id: categoryId }))
+      },
+      products: {
+        set: data.productIds.map(productId => ({ id: productId }))
+      }
+    }
   });
 }

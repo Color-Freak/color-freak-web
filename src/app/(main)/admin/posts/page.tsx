@@ -4,9 +4,18 @@ import styles from './posts.module.css';
 import layoutStyles from '@/app/layout.module.css';
 import DeleteButton from './DeleteButton';
 import { EditIcon } from '@/components/Icons';
+import { Pagination } from '@/components/features/Pagination';
 
-export default async function AdminPostsPage() {
-    const posts = await getAdminPosts();
+type PageProps = {
+    searchParams: Promise<{ page?: string }>;
+};
+
+export default async function AdminPostsPage({ searchParams }: PageProps) {
+    const resolvedParams = await searchParams;
+    const currentPage = Number(resolvedParams.page) || 1;
+
+    // 2. Agora sim a variável currentPage existe e podemos consultar o banco
+    const { posts, totalPages } = await getAdminPosts(currentPage, 10);
 
     return (
         <div className={layoutStyles.contentContainer}>
@@ -51,6 +60,12 @@ export default async function AdminPostsPage() {
                         )}
                     </tbody>
                 </table>
+
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    baseUrl="/admin/posts"
+                />
 
             </div>
         </div>
