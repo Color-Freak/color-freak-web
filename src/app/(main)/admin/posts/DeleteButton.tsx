@@ -3,6 +3,7 @@
 import { useTransition } from 'react';
 import { handleDeletePost } from '@/actions/postActions';
 import styles from './posts.module.css';
+import { TrashIcon } from '@/components/Icons';
 
 export default function DeleteButton({ id }: { id: string }) {
   const [isPending, startTransition] = useTransition();
@@ -25,7 +26,7 @@ export default function DeleteButton({ id }: { id: string }) {
       className={styles.deleteBtn}
       style={{ opacity: isPending ? 0.5 : 1 }}
     >
-      {isPending ? 'Apagando...' : 'Apagar'}
+      <TrashIcon/>
     </button>
   );
 }

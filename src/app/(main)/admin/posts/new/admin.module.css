@@ -77,3 +77,12 @@
 .button:hover {
   background-color: var(--cor1);
 }
+
+.formActions {
+  display: flex;
+  justify-content: space-between; /* Empurra o Voltar pra esquerda e o Publicar pra direita */
+  align-items: center; /* Garante que os dois fiquem alinhados verticalmente no centro */
+  margin-top: 2rem; /* Dá um respiro entre o último input e os botões */
+  padding-top: 2rem;
+  border-top: 1px solid var(--cor2); /* Linha sutil opcional para separar o form dos botões */
+}

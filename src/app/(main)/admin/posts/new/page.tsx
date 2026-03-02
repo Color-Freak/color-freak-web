@@ -8,5 +8,5 @@ export default async function NewPostPage() {
     getAllPartners()
   ]);
 
-  return <PostForm categories={categories} products={products} partners={partners} />
+  return  <PostForm categories={categories} products={products} partners={partners} />
 }

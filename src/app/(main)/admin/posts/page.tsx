@@ -3,6 +3,7 @@ import { getAdminPosts } from '@/services/postService';
 import styles from './posts.module.css';
 import layoutStyles from '@/app/layout.module.css';
 import DeleteButton from './DeleteButton';
+import { EditIcon } from '@/components/Icons';
 
 export default async function AdminPostsPage() {
     const posts = await getAdminPosts();
@@ -33,12 +34,13 @@ export default async function AdminPostsPage() {
                                 <td>{post.title}</td>
                                 <td>{new Date(post.createdAt).toLocaleDateString('pt-BR')}</td>
                                 <td>{post.published ? 'Publicado' : 'Rascunho'}</td>
-                                <td className={styles.actions}>
-                                    {/* O link de editar vai para uma rota que faremos depois */}
-                                    <Link href={`/admin/posts/${post.id}/edit`} className={styles.editBtn}>
-                                        Editar
-                                    </Link>
-                                    <DeleteButton id={post.id} />
+                                <td>
+                                    <div className={styles.actions}>
+                                        <Link href={`/admin/posts/${post.id}/edit`} className={styles.editBtn}>
+                                            <EditIcon /> {/* 2. Coloque o ícone ao lado do texto */}
+                                        </Link>
+                                        <DeleteButton id={post.id} />
+                                    </div>
                                 </td>
                             </tr>
                         ))}

@@ -4,9 +4,10 @@ import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import Select from 'react-select' // 1. Importação do React Select adicionada
 import { handleSavePost } from '@/actions/postActions'
-import { Category, Product, Partner } from '@prisma/client' 
+import { Category, Product, Partner } from '@prisma/client'
 import styles from './admin.module.css'
 import layoutStyles from '@/app/layout.module.css'
+import { BackButton } from '@/components/BackButton'
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false })
 
@@ -27,6 +28,7 @@ export function PostForm({ categories, products, partners }: PostFormProps) {
     return (
         <div className={layoutStyles.contentContainer}>
             <div className={styles.container}>
+
                 <h1 className={styles.title}>Nova Matéria</h1>
 
                 <div data-color-mode="light">
@@ -93,7 +95,13 @@ export function PostForm({ categories, products, partners }: PostFormProps) {
                             <input type="hidden" name="content" value={content} />
                         </div>
 
-                        <button type="submit" className={styles.button}>Publicar Matéria</button>
+                        <div className={styles.formActions}>
+                            <BackButton />
+
+                            <button type="submit" className={styles.button}>
+                                Publicar Matéria
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

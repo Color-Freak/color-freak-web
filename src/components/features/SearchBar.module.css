@@ -9,12 +9,11 @@
   flex: 1;
   padding: 0.5rem;
   border: 1px solid var(--cor0);
-  /* Cinza Médio */
   border-radius: 4px 0 0 4px;
   font-size: 0.8rem;
   color: var(--cor1);
   outline: none;
-  background-color: transparent;
+  background-color: white;
   transition: border-color 0.2s;
 }
 

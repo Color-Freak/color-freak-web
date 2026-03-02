@@ -38,21 +38,26 @@
   background: white;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  /* Sombra mais suave, como na imagem */
 }
 
-.table th, .table td {
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--cor2);
-  color: var(--cor1);
-}
-
+/* Cabeçalho limpo, apenas com texto e sem fundo cinza */
 .table th {
-  background-color: #fafafa;
+  background-color: white;
   font-weight: 700;
   font-size: 0.85rem;
   text-transform: uppercase;
+  color: var(--cor1);
+  /* Linha sutilmente mais forte no cabeçalho */
+}
+
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+  color: var(--cor1);
+  border-bottom: solid 1px var(--cor0);
 }
 
 .table tr:last-child td {
@@ -61,22 +66,40 @@
 
 .actions {
   display: flex;
-  gap: 0.8rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3rem;
 }
 
-.editBtn, .deleteBtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-decoration: underline;
-}
+.editBtn,
+.deleteBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.editBtn {
+  width: 36px;
+  height: 36px;
+  padding: 0; 
+
+  border-radius: 5px; 
+
+  background-color: transparent;
   color: var(--cor4);
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.editBtn:hover {
+  background-color: var(--cor4);
+  color: white;
 }
 
 .deleteBtn {
-  color: #e74c3c; /* Vermelho para indicar perigo */
+  color: var(--cor3);
+}
+
+.deleteBtn:hover {
+  background-color: var(--cor3);
+  color: white;
 }

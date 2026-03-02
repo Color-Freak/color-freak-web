@@ -6,7 +6,7 @@ import Image from 'next/image' // 1. Importe o Image
 import styles from './SearchBar.module.css'
 
 // 2. Importe o seu SVG (ajuste o nome do arquivo para o correto)
-import searchIcon from '@/assets/search-icon.svg' 
+import searchIcon from '@/assets/icons/search-icon.svg' 
 
 export function SearchBar() {
   const router = useRouter()
