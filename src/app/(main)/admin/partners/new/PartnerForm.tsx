@@ -2,7 +2,7 @@
 
 import { handleSavePartner } from '@/actions/partnerActions'
 import { Partner } from '@prisma/client'
-import styles from '../../posts/new/admin.module.css'
+import styles from '@/app/(main)/admin/form.module.css'
 import layoutStyles from '@/app/layout.module.css'
 import { BackButton } from '@/components/BackButton'
 

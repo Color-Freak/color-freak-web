@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import Select from 'react-select'
 import { handleSavePost } from '@/actions/postActions'
 import { Category, Product, Partner, Post } from '@prisma/client'
-import styles from './admin.module.css'
+import styles from '@/app/(main)/admin/form.module.css'
 import layoutStyles from '@/app/layout.module.css'
 import { BackButton } from '@/components/BackButton'
 

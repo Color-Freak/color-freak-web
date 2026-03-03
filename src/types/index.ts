@@ -20,3 +20,14 @@ export type PartnerData = {
   color?: string;
   website?: string;
 };
+
+// Tipagem de produtos
+export type ProductData = {
+  name: string;
+  description?: string;
+  imageUrl: string;
+  affiliateLink: string;
+  price?: string;
+  partnerId?: string;
+  categoryIds: string[]; // <-- Recebe os IDs do React Select
+};
