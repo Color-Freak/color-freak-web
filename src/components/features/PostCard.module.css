@@ -50,6 +50,19 @@
   flex: 1;
 }
 
+.categories {
+  display: flex;
+  flex-wrap: wrap; /* Se tiver muitas categorias, quebra a linha sem estourar o card */
+  gap: 0.5rem;
+  margin-bottom: 0.3rem; /* Dá um respiro antes do título */
+}
+
+.categoryTag {
+  color: var(--cor3); /* Usando o roxo/rosa que você já definiu no sistema */
+  font-size: 0.7rem; /* Fonte menor para não brigar com o título */
+  font-weight: 400;
+}
+
 .title {
   font-size: 1.1rem;
   font-weight: 700;

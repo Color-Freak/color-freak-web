@@ -32,6 +32,16 @@ export function PostCard({ post }: PostCardProps) {
             <div className={styles.content}>
 
                 <div className={styles.textGroup}>
+                    {post.categories && post.categories.length > 0 && (
+                        <div className={styles.categories}>
+                            {post.categories.map((category) => (
+                                <span key={category.id} className={styles.categoryTag}>
+                                    #{category.name}
+                                </span>
+                            ))}
+                        </div>
+                    )}
+
                     <Link href={`/blog/${post.slug}`}>
                         <h3 className={styles.title}>{post.title}</h3>
                     </Link>
