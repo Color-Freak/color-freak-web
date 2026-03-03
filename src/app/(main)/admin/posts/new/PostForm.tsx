@@ -4,7 +4,7 @@ import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import Select from 'react-select'
 import { handleSavePost } from '@/actions/postActions'
-import { Category, Product, Partner, Post } from '@prisma/client' 
+import { Category, Product, Partner, Post } from '@prisma/client'
 import styles from './admin.module.css'
 import layoutStyles from '@/app/layout.module.css'
 import { BackButton } from '@/components/BackButton'
@@ -15,7 +15,7 @@ interface PostFormProps {
     categories: Category[];
     products: Product[];
     partners: Partner[];
-    post?: Post & { 
+    post?: Post & {
         categories?: Category[];
         products?: Product[];
     };
@@ -38,7 +38,7 @@ export function PostForm({ categories, products, partners, post }: PostFormProps
 
                 <div data-color-mode="light">
                     <form action={handleSavePost} className={styles.form}>
-                        {isEditing && <input type="hidden" name="postId" value={post.id} />}
+                        {isEditing && <input type="hidden" name="postId" value={post?.id} />}
 
                         <div className={styles.inputGroup}>
                             <label htmlFor="title" className={styles.label}>Título</label>
@@ -88,9 +88,28 @@ export function PostForm({ categories, products, partners, post }: PostFormProps
 
                         <div className={styles.formActions}>
                             <BackButton />
-                            <button type="submit" className={styles.button}>
-                                {isEditing ? 'Atualizar Matéria' : 'Publicar Matéria'}
-                            </button>
+
+                            {/* Agrupamos os botões na direita com um gap */}
+                            <div style={{ display: 'flex', gap: '1rem' }}>
+                                <button
+                                    type="submit"
+                                    name="actionType"
+                                    value="draft"
+                                    className={styles.button}
+                                    style={{ backgroundColor: 'transparent', color: 'var(--cor4)', border: '1px solid var(--cor4)' }}
+                                >
+                                    {isEditing ? 'Atualizar Rascunho' : 'Salvar Rascunho'}
+                                </button>
+
+                                <button
+                                    type="submit"
+                                    name="actionType"
+                                    value="publish"
+                                    className={styles.button}
+                                >
+                                    {isEditing ? 'Atualizar Matéria' : 'Publicar Matéria'}
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>

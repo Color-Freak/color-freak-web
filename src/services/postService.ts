@@ -1,6 +1,7 @@
 import { prisma } from '../lib/prisma';
 import { Prisma } from '@prisma/client';
 
+// Busca matérias para a listagem da home e aceita filtro por palavra chave
 export async function getPosts(page: number = 1, limit: number = 9, search?: string) {
   const skip = (page - 1) * limit;
 
@@ -37,6 +38,8 @@ export async function getPosts(page: number = 1, limit: number = 9, search?: str
   return { posts, totalPages };
 }
 
+
+// Busca os posts mais recentes para o SideBar
 export async function getLatestPosts(limit: number = 6) {
   const latestPosts = await prisma.post.findMany({
     take: limit, // Traz apenas a quantidade necessária (melhor performance)
@@ -46,6 +49,7 @@ export async function getLatestPosts(limit: number = 6) {
 
   return latestPosts;
 }
+
 
 export async function getPostBySlug(slug: string) {
   const post = await prisma.post.findUnique({
@@ -63,19 +67,22 @@ export async function getPostBySlug(slug: string) {
   return post;
 }
 
+// Busca todas as categorias para o cadastro de matéria
 export async function getAllCategories() {
   return prisma.category.findMany();
 }
 
+// Busca todos os produtos para o cadastro de matéria
 export async function getAllProducts() {
   return prisma.product.findMany();
 }
 
+// Busca todos os parceiros para o cadastro de matéria
 export async function getAllPartners() {
   return prisma.partner.findMany();
 }
 
-// Atualize o createPost para receber os arrays de categorias e produtos
+// Cria uma nova matéria
 export async function createPost(data: {
   title: string;
   subtitle: string;
@@ -108,6 +115,7 @@ export async function createPost(data: {
   return newPost;
 }
 
+// Busca os posts para a listagem do admin
 export async function getAdminPosts(page: number = 1, limit: number = 10) {
   const skip = (page - 1) * limit;
 
@@ -144,6 +152,7 @@ export async function deletePostById(id: string) {
   });
 }
 
+// Busca a matéria para a página de edição
 export async function getPostById(id: string) {
   return prisma.post.findUnique({
     where: { id },
@@ -166,6 +175,7 @@ type PostUpdateData = {
   partnerId?: string;
 };
 
+// Atualiza uma matéria já existente
 export async function updatePost(id: string, data: PostUpdateData) {
   return prisma.post.update({
     where: { id },
