@@ -11,3 +11,12 @@ export type PostWithDetails = Prisma.PostGetPayload<{
     author: true;
   }
 }>
+
+// Tipagem de parceiros
+export type PartnerData = {
+  name: string;
+  slug: string;
+  logoUrl?: string;
+  color?: string;
+  website?: string;
+};
