@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getPartners } from '@/services/partnerService';
 import { Pagination } from '@/components/features/Pagination';
-import styles from '@/app/(main)/admin/posts/posts.module.css';
+import styles from '@/app/(blog)/admin/posts/posts.module.css';
 import layoutStyles from '@/app/layout.module.css';
 import DeletePartnerButton from './DeletePartnerButton';
 import { EditIcon } from '@/components/Icons';

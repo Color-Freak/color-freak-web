@@ -13,10 +13,10 @@ export default async function EditProductPage({ params }: EditPageProps) {
     const productId = resolvedParams.id;
 
     // Traz o produto atual e as listas para preencher os selects
-    const [product, categories, partners] = await Promise.all([
+    const [product, { categories }, { partners }] = await Promise.all([
         getProductById(productId),
-        getCategories(),
-        getPartners()
+        getCategories(1, 100), 
+        getPartners(1, 100)    
     ]);
 
     if (!product) {

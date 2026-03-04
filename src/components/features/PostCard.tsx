@@ -16,7 +16,7 @@ export function PostCard({ post }: PostCardProps) {
 
     return (
         <div className={styles.card}>
-            <Link href={`/blog/${post.slug}`} className={styles.imageWrapper}>
+            <Link href={`/post/${post.slug}`} className={styles.imageWrapper}>
                 {post.imageUrl ? (
                     <Image
                         src={post.imageUrl}
@@ -42,24 +42,24 @@ export function PostCard({ post }: PostCardProps) {
                         </div>
                     )}
 
-                    <Link href={`/blog/${post.slug}`}>
+                    <Link href={`/post/${post.slug}`}>
                         <h3 className={styles.title}>{post.title}</h3>
                     </Link>
 
-                    <Link href={`/blog/${post.slug}`}>
+                    <Link href={`/post/${post.slug}`}>
                         <p className={styles.subtitle}>
                             {post.subtitle}
                         </p>
                     </Link>
 
-                    <Link href={`/blog/${post.slug}`}>
+                    <Link href={`/post/${post.slug}`}>
                         <div className={styles.meta}>
                             {formattedDate}
                         </div>
                     </Link>
                 </div>
 
-                <Link href={`/blog/${post.slug}`} className={styles.button}>
+                <Link href={`/post/${post.slug}`} className={styles.button}>
                     Ler mais
                 </Link>
 

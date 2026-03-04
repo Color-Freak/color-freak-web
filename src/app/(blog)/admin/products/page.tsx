@@ -1,9 +1,7 @@
-// src/app/(main)/admin/products/page.tsx
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { getProducts } from '@/services/productService';
-import sharedStyles from '@/app/(main)/admin/posts/posts.module.css';
+import sharedStyles from '@/app/(blog)/admin/posts/posts.module.css';
 import styles from './products.module.css';
 import layoutStyles from '@/app/layout.module.css';
 import DeleteProductButton from './DeleteProductButton';

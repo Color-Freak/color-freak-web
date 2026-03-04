@@ -3,10 +3,9 @@ import { getPartners } from '@/services/partnerService';
 import { ProductForm } from './ProductForm';
 
 export default async function NewProductPage() {
-    // Executa as duas consultas ao mesmo tempo
-    const [categories, partners] = await Promise.all([
-        getCategories(),
-        getPartners()
+    const [{ categories }, { partners }] = await Promise.all([
+        getCategories(1, 100), 
+        getPartners(1, 100)    
     ]);
 
     return <ProductForm categories={categories} partners={partners} />;

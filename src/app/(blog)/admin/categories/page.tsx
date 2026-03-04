@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getCategories } from '@/services/categoryService';
 import { Pagination } from '@/components/features/Pagination';
-import styles from '@/app/(main)/admin/posts/posts.module.css';
+import styles from '@/app/(blog)/admin/posts/posts.module.css';
 import layoutStyles from '@/app/layout.module.css';
 import DeleteCategoryButton from './DeleteCategoryButton';
 import { EditIcon } from '@/components/Icons';

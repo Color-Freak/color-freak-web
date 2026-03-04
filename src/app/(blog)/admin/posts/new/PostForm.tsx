@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import Select from 'react-select'
 import { handleSavePost } from '@/actions/postActions'
 import { Category, Product, Partner, Post } from '@prisma/client'
-import styles from '@/app/(main)/admin/form.module.css'
+import styles from '@/app/(blog)/admin/form.module.css'
 import layoutStyles from '@/app/layout.module.css'
 import { BackButton } from '@/components/BackButton'
 
@@ -41,7 +41,7 @@ export function PostForm({ categories, products, partners, post }: PostFormProps
                         {isEditing && <input type="hidden" name="postId" value={post?.id} />}
 
                         <div className={styles.inputGroup}>
-                            <label htmlFor="title" className={styles.label}>Título</label>
+                            <label htmlFor="title" className={styles.label}>Título *</label>
                             <input type="text" id="title" name="title" defaultValue={post?.title || ''} className={styles.input} required />
                         </div>
 
@@ -51,7 +51,7 @@ export function PostForm({ categories, products, partners, post }: PostFormProps
                         </div>
 
                         <div className={styles.inputGroup}>
-                            <label htmlFor="slug" className={styles.label}>URL da Matéria (Slug)</label>
+                            <label htmlFor="slug" className={styles.label}>URL da Matéria (Slug) *</label>
                             <input type="text" id="slug" name="slug" defaultValue={post?.slug || ''} className={styles.input} required />
                         </div>
 
@@ -71,17 +71,17 @@ export function PostForm({ categories, products, partners, post }: PostFormProps
                         </div>
 
                         <div className={styles.inputGroup}>
-                            <label className={styles.label}>Categorias</label>
+                            <label className={styles.label}>Categorias *</label>
                             <Select isMulti name="categoryIds" options={categoryOptions} defaultValue={defaultCategories} placeholder="Selecione as categorias..." />
                         </div>
 
                         <div className={styles.inputGroup}>
-                            <label className={styles.label}>Produtos Indicados</label>
+                            <label className={styles.label}>Produtos Indicados *</label>
                             <Select isMulti name="productIds" options={productOptions} defaultValue={defaultProducts} placeholder="Selecione os produtos..." />
                         </div>
 
                         <div className={styles.inputGroup}>
-                            <label className={styles.label}>Conteúdo da Matéria</label>
+                            <label className={styles.label}>Conteúdo da Matéria *</label>
                             <MDEditor value={content} onChange={(val) => setContent(val || '')} height={400} />
                             <input type="hidden" name="content" value={content} />
                         </div>

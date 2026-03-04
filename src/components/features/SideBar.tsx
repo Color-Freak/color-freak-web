@@ -14,7 +14,7 @@ export function SideBar({ latestPosts }: SideBarProps) {
       <ul className={styles.list}>
         {latestPosts.map((post) => (
           <li key={post.id}>
-            <Link href={`/blog/${post.slug}`} className={styles.link}>
+            <Link href={`/post/${post.slug}`} className={styles.link}>
               {post.title}
             </Link>
           </li>

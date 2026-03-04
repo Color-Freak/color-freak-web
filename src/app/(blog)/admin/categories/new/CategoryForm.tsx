@@ -2,7 +2,7 @@
 
 import { handleSaveCategory } from '@/actions/categoryActions'
 import { Category } from '@prisma/client' 
-import styles from '@/app/(main)/admin/form.module.css'
+import styles from '@/app/(blog)/admin/form.module.css'
 import layoutStyles from '@/app/layout.module.css'
 import { BackButton } from '@/components/BackButton'
 
