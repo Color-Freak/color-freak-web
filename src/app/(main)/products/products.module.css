@@ -1,12 +1,3 @@
-.container {
-    width: 100%;
-    max-width: 1300px;
-    /* Mantém o padrão largo do layout global */
-    margin: 0 auto;
-    padding: 3rem 0;
-    /* Exatamente como no seu posts.module.css */
-}
-
 .title {
     font-size: 2rem;
     /* Exatamente como no seu post.module.css */

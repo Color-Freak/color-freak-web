@@ -2,6 +2,7 @@ import { getProducts } from '@/services/productService';
 import { getCategories } from '@/services/categoryService';
 import { ProductCard } from '@/components/features/ProductCard';
 import { Pagination } from '@/components/features/Pagination';
+import { TopBar } from '@/components/features/TopBar';
 import Link from 'next/link';
 import styles from './products.module.css';
 import layoutStyles from '@/app/layout.module.css';
@@ -32,6 +33,9 @@ export default async function ProdutosPage({ searchParams }: PageProps) {
     return (
         <main className={layoutStyles.contentContainer}>
             <div className={styles.container}>
+
+                <TopBar />
+                
                 <h1 className={styles.title}>Nossos Produtos Favoritos</h1>
 
                 <div className={styles.mainLayout}>

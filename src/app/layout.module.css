@@ -17,6 +17,13 @@
   gap: 3rem;
 }
 
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}
+
 /* Ajuste Mobile */
 @media (max-width: 768px) {
   .contentContainer {

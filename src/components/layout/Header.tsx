@@ -20,14 +20,6 @@ export function Header() {
           />
         </Link>
       </div>
-
-      {/* <nav className={styles.nav}>
-        <ul>
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/sobre">Sobre</Link></li>
-          <li><Link href="/ferramentas">Ferramentas</Link></li>
-        </ul>
-      </nav> */}
     </header>
   )
 }

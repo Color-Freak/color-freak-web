@@ -2,7 +2,7 @@ import { getPosts, getLatestPosts } from '@/services/postService'
 import { PostCard } from '@/components/features/PostCard'
 import { Pagination } from '@/components/features/Pagination'
 import { SideBar } from '@/components/features/SideBar'
-import { SearchBar } from '@/components/features/SearchBar' // <-- Importe a barra
+import { TopBar } from '@/components/features/TopBar';
 import { PostWithDetails } from '@/types'
 
 import styles from '@/app/page.module.css'
@@ -20,39 +20,38 @@ export default async function Home({
 
   // Passamos o searchQuery como 3º argumento
   const [paginatedData, latestPosts] = await Promise.all([
-    getPosts(currentPage, 9, searchQuery), 
+    getPosts(currentPage, 9, searchQuery),
     getLatestPosts(5)
   ]);
 
   const { posts, totalPages } = paginatedData;
 
   return (
-    <div className={layoutStyles.contentContainer}>
-      
-      {/* Título e subtítulo removidos. A SearchBar entra direto aqui no topo */}
-      <SearchBar />
+    <main className={layoutStyles.contentContainer}>
+      <div className={styles.container}>
+        <TopBar showSearch={true} />
 
-      <div className={styles.mainLayout}>
-        
-        <div className={styles.contentArea}>
-          {/* Se a busca não retornar nada, damos um feedback ao usuário */}
-          {posts.length === 0 ? (
-            <p style={{ color: 'var(--cor2)' }}>Nenhuma matéria encontrada para &quot;{searchQuery}&quot;.</p>
-          ) : (
-            <div className={styles.grid}>
-              {posts.map((post: PostWithDetails) => (
-                <PostCard key={post.id} post={post} />
-              ))}
-            </div>
-          )}
-          
-          <Pagination currentPage={currentPage} totalPages={totalPages} />
+        <div className={styles.mainLayout}>
+
+          <div className={styles.contentArea}>
+            {/* Se a busca não retornar nada, damos um feedback ao usuário */}
+            {posts.length === 0 ? (
+              <p style={{ color: 'var(--cor2)' }}>Nenhuma matéria encontrada para &quot;{searchQuery}&quot;.</p>
+            ) : (
+              <div className={styles.grid}>
+                {posts.map((post: PostWithDetails) => (
+                  <PostCard key={post.id} post={post} />
+                ))}
+              </div>
+            )}
+
+            <Pagination currentPage={currentPage} totalPages={totalPages} />
+          </div>
+
+          <SideBar latestPosts={latestPosts} />
+
         </div>
-
-        <SideBar latestPosts={latestPosts} />
-
       </div>
-      
-    </div>
+    </main>
   )
 }

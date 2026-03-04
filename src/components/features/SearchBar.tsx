@@ -27,7 +27,7 @@ export function SearchBar() {
     <form onSubmit={handleSearch} className={styles.container}>
       <input
         type="text"
-        placeholder="Digite uma palavra chave..."
+        placeholder="Busque por palavra chave..."
         className={styles.input}
         value={query}
         onChange={(e) => setQuery(e.target.value)}

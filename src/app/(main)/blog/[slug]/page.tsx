@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown' // 1. Importe a biblioteca
 import { getPostBySlug, getLatestPosts } from '@/services/postService'
 import { SideBar } from '@/components/features/SideBar'
 import { ProductCard } from '@/components/features/ProductCard'
+import { TopBar } from '@/components/features/TopBar'
 
 import layoutStyles from '@/app/layout.module.css'
 import styles from './post.module.css'
@@ -33,6 +34,9 @@ export default async function BlogPostPage({
     return (
         <div className={layoutStyles.contentContainer}>
             <div className={styles.container}>
+
+                <TopBar />
+
                 <div className={styles.layout}>
 
                     <article className={styles.mainContent}>
@@ -57,15 +61,10 @@ export default async function BlogPostPage({
                             </div>
                         )}
 
-                        {/* 2. Envolva o conteúdo com o ReactMarkdown */}
+                        {/* 2. Conteúdo real renderizado direto do banco */}
                         <div className={styles.content}>
                             <ReactMarkdown>
-                                {`Aqui vai o texto introdutório.
-
-# Este é um Título Real
-## E aqui um subtítulo
-
-Agora sim o Markdown consegue entender, porque demos um "Enter" antes das hashtags.`}
+                                {post.content}
                             </ReactMarkdown>
                         </div>
 
