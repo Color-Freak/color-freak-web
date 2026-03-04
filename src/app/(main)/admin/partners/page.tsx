@@ -1,12 +1,21 @@
 import Link from 'next/link';
 import { getPartners } from '@/services/partnerService';
-import styles from '../posts/posts.module.css';
+import { Pagination } from '@/components/features/Pagination';
+import styles from '@/app/(main)/admin/posts/posts.module.css';
 import layoutStyles from '@/app/layout.module.css';
 import DeletePartnerButton from './DeletePartnerButton';
 import { EditIcon } from '@/components/Icons';
 
-export default async function AdminPartnersPage() {
-    const partners = await getPartners();
+type PageProps = {
+    searchParams: Promise<{ page?: string }>;
+};
+
+export default async function AdminPartnersPage({ searchParams }: PageProps) {
+    const resolvedParams = await searchParams;
+    const currentPage = Number(resolvedParams.page) || 1;
+
+    // Recebe o objeto desestruturado
+    const { partners, totalPages } = await getPartners(currentPage, 10);
 
     return (
         <div className={layoutStyles.contentContainer}>
@@ -36,21 +45,19 @@ export default async function AdminPartnersPage() {
                                 <td>{partner.website || '-'}</td>
                                 <td>
                                     <div className={styles.actions}>
-                                        <Link href={`/admin/partners/${partner.id}/edit`} className={styles.editBtn} title="Editar">
-                                            <EditIcon />
-                                        </Link>
+                                        <Link href={`/admin/partners/${partner.id}/edit`} className={styles.editBtn} title="Editar"><EditIcon /></Link>
                                         <DeletePartnerButton id={partner.id} />
                                     </div>
                                 </td>
                             </tr>
                         ))}
                         {partners.length === 0 && (
-                            <tr>
-                                <td colSpan={3} style={{ textAlign: 'center' }}>Nenhum parceiro encontrado.</td>
-                            </tr>
+                            <tr><td colSpan={4} style={{ textAlign: 'center' }}>Nenhum parceiro encontrado.</td></tr>
                         )}
                     </tbody>
                 </table>
+
+                <Pagination currentPage={currentPage} totalPages={totalPages} baseUrl="/admin/partners" />
             </div>
         </div>
     );

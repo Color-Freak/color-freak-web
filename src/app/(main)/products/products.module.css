@@ -1,0 +1,110 @@
+.container {
+    width: 100%;
+    max-width: 1300px;
+    /* Mantém o padrão largo do layout global */
+    margin: 0 auto;
+    padding: 3rem 0;
+    /* Exatamente como no seu posts.module.css */
+}
+
+.title {
+    font-size: 2rem;
+    /* Exatamente como no seu post.module.css */
+    color: var(--cor1);
+    margin-bottom: 2rem;
+    text-align: left;
+    /* Mantendo o alinhamento à esquerda que você prefere */
+    line-height: 1.2;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    /* A sua regra de ouro do page.module.css */
+    gap: 2rem;
+    /* O respiro exato que você já usa */
+}
+
+/* Como usamos flex, precisamos garantir que os cards tenham uma largura base para não esmagarem */
+.grid>div {
+    flex: 1 1 250px;
+    /* O card vai ter no mínimo 250px, e crescer para preencher o espaço se precisar */
+    max-width: 300px;
+    /* Impede que o card fique gigante em telas muito grandes */
+}
+
+.emptyMessage {
+    color: var(--cor2);
+    /* Usando a sua cor padrão para textos secundários */
+    font-size: 1.1rem;
+}
+
+/* --- LAYOUT COM SIDEBAR --- */
+.mainLayout {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+    /* Permite que o sticky funcione */
+}
+
+.contentArea {
+    flex: 1;
+    min-width: 0;
+}
+
+/* --- SIDEBAR DE CATEGORIAS --- */
+.sidebar {
+    width: 300px;
+    top: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background-color: white;
+}
+
+.sidebarTitle {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--cor1);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--cor2);
+}
+
+.categoryList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.categoryLink {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--cor2);
+    line-height: 1.4;
+    transition: color 0.2s;
+    display: block;
+}
+
+.categoryLink:hover {
+    color: var(--cor4);
+    font-weight: 600;
+}
+
+/* O estado do link quando a categoria está selecionada */
+.categoryLinkActive {
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    color: var(--cor4);
+    /* Mantém o roxo */
+    font-weight: 700;
+    /* Mais negrito para destacar que é a página atual */
+}

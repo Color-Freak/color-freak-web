@@ -58,7 +58,6 @@ export default async function BlogPostPage({
                         )}
 
                         {/* 2. Envolva o conteúdo com o ReactMarkdown */}
-                        {/* 2. Envolva o conteúdo com o ReactMarkdown */}
                         <div className={styles.content}>
                             <ReactMarkdown>
                                 {`Aqui vai o texto introdutório.

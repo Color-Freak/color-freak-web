@@ -1,14 +1,17 @@
+// src/app/(main)/admin/products/page.tsx
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { getProducts } from '@/services/productService';
-import sharedStyles from '../posts/posts.module.css';
+import sharedStyles from '@/app/(main)/admin/posts/posts.module.css';
 import styles from './products.module.css';
 import layoutStyles from '@/app/layout.module.css';
 import DeleteProductButton from './DeleteProductButton';
 import { EditIcon } from '@/components/Icons';
 
+// COMO DEVE FICAR:
 export default async function AdminProductsPage() {
-    const products = await getProducts();
+    const { products } = await getProducts(undefined, 1, 100);
 
     return (
         <div className={layoutStyles.contentContainer}>

@@ -1,0 +1,38 @@
+.nav {
+  width: 100%;
+  background-color: transparent;
+}
+
+.list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  max-width: 1300px; /* Mantém o mesmo alinhamento dos seus formulários */
+  margin: 0 auto;
+  padding: 0;
+  justify-content: center;
+}
+
+.link {
+  display: inline-block;
+  padding: 1rem 0 0.5rem 0;
+  color: var(--cor1);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  opacity: 0.6;
+}
+
+.link:hover {
+  opacity: 1;
+  color: var(--cor4);
+}
+
+/* A mágica do item ativo */
+.active {
+  opacity: 1;
+  color: var(--cor4);
+  border-bottom: 2px solid var(--cor4);
+}

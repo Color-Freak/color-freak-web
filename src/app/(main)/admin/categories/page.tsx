@@ -1,13 +1,21 @@
 import Link from 'next/link';
 import { getCategories } from '@/services/categoryService';
-import styles from '../posts/posts.module.css'; // Reutilizando a inteligência visual
+import { Pagination } from '@/components/features/Pagination';
+import styles from '@/app/(main)/admin/posts/posts.module.css';
 import layoutStyles from '@/app/layout.module.css';
 import DeleteCategoryButton from './DeleteCategoryButton';
 import { EditIcon } from '@/components/Icons';
 
-export default async function AdminCategoriesPage() {
-    // Busca as categorias do banco
-    const categories = await getCategories();
+type PageProps = {
+    searchParams: Promise<{ page?: string }>;
+};
+
+export default async function AdminCategoriesPage({ searchParams }: PageProps) {
+    const resolvedParams = await searchParams;
+    const currentPage = Number(resolvedParams.page) || 1;
+
+    // Recebe o objeto desestruturado
+    const { categories, totalPages } = await getCategories(currentPage, 10);
 
     return (
         <div className={layoutStyles.contentContainer}>
@@ -30,33 +38,22 @@ export default async function AdminCategoriesPage() {
                     <tbody>
                         {categories.map((category) => (
                             <tr key={category.id}>
-                                <td>
-                                    <span className={styles.mainText}>{category.name}</span>
-                                </td>
+                                <td><span className={styles.mainText}>{category.name}</span></td>
                                 <td>
                                     <div className={styles.actions}>
-                                        <Link 
-                                            href={`/admin/categories/${category.id}/edit`} 
-                                            className={styles.editBtn}
-                                            title="Editar"
-                                        >
-                                            <EditIcon />
-                                        </Link>
+                                        <Link href={`/admin/categories/${category.id}/edit`} className={styles.editBtn} title="Editar"><EditIcon /></Link>
                                         <DeleteCategoryButton id={category.id} />
                                     </div>
                                 </td>
                             </tr>
                         ))}
                         {categories.length === 0 && (
-                            <tr>
-                                <td colSpan={2} style={{ textAlign: 'center' }}>
-                                    Nenhuma categoria encontrada.
-                                </td>
-                            </tr>
+                            <tr><td colSpan={2} style={{ textAlign: 'center' }}>Nenhuma categoria encontrada.</td></tr>
                         )}
                     </tbody>
                 </table>
-
+                
+                <Pagination currentPage={currentPage} totalPages={totalPages} baseUrl="/admin/categories" />
             </div>
         </div>
     );

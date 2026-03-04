@@ -1,10 +1,18 @@
 import { prisma } from '../lib/prisma';
 import { PartnerData } from '@/types';
 
-export async function getPartners() {
-  return prisma.partner.findMany({
-    orderBy: { name: 'asc' }
-  });
+export async function getPartners(page: number = 1, limit: number = 10) {
+  const skip = (page - 1) * limit;
+  const [partners, totalCount] = await Promise.all([
+    prisma.partner.findMany({
+      orderBy: { name: 'asc' },
+      skip,
+      take: limit
+    }),
+    prisma.partner.count()
+  ]);
+
+  return { partners, totalPages: Math.ceil(totalCount / limit) };
 }
 
 export async function getPartnerById(id: string) {
