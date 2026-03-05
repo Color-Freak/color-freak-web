@@ -9,6 +9,28 @@ import { TopBar } from '@/components/features/TopBar'
 import layoutStyles from '@/app/layout.module.css'
 import styles from './post.module.css'
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const post = await getPostBySlug(slug);
+
+    if (!post) {
+        return {
+            title: 'Post não encontrado | Color Freak',
+        }
+    }
+
+    return {
+        title: `${post.title} | Color Freak`,
+        description: post.subtitle, // O Google usa isso no resumo da busca
+        openGraph: {
+            title: post.title,
+            description: post.subtitle,
+            images: post.imageUrl ? [post.imageUrl] : [],
+            type: 'article',
+        },
+    }
+}
+
 export default async function BlogPostPage({
     params,
 }: {

@@ -10,8 +10,6 @@ import { getCategories } from '@/services/categoryService';
 import styles from '@/app/page.module.css'
 import layoutStyles from '@/app/layout.module.css'
 
-export const dynamic = 'force-dynamic';
-
 export default async function Home({
   searchParams,
 }: {

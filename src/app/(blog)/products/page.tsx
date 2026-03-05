@@ -1,4 +1,5 @@
 import { getProducts } from '@/services/productService';
+import { getLatestPosts } from '@/services/postService'
 import { getCategories } from '@/services/categoryService';
 import { ProductCard } from '@/components/features/ProductCard';
 import { Pagination } from '@/components/features/Pagination';
@@ -6,8 +7,7 @@ import { TopBar } from '@/components/features/TopBar';
 import { CategorySideBar } from '@/components/features/CategorySideBar';
 import styles from './products.module.css';
 import layoutStyles from '@/app/layout.module.css';
-
-export const dynamic = 'force-dynamic';
+import { SideBar } from '@/components/features/SideBar';
 
 export const metadata = {
     title: 'Produtos Recomendados | Color Freak',
@@ -23,8 +23,9 @@ export default async function ProdutosPage({ searchParams }: PageProps) {
     const activeCategoryId = resolvedParams.categoria;
 
     const currentPage = Number(resolvedParams.page) || 1;
-    const [productData, categoryData] = await Promise.all([
-        getProducts(activeCategoryId, currentPage, 12), 
+    const [productData, latestPosts, categoryData] = await Promise.all([
+        getProducts(activeCategoryId, currentPage, 12),
+        getLatestPosts(5),
         getCategories(1, 100)
     ]);
 
@@ -37,7 +38,7 @@ export default async function ProdutosPage({ searchParams }: PageProps) {
             <div className={styles.container}>
 
                 <TopBar />
-                
+
                 <h1 className={styles.title}>Nossos Produtos Favoritos</h1>
 
                 <div className={styles.mainLayout}>
@@ -64,11 +65,15 @@ export default async function ProdutosPage({ searchParams }: PageProps) {
                     </div>
 
                     {/* COLUNA DIREITA: Nosso Componente Reutilizado! */}
-                    <CategorySideBar 
-                        categories={categories} 
-                        activeCategoryId={activeCategoryId} 
-                        baseUrl="/products"
-                    />
+
+                    <aside className={styles.rightColumn}>
+                        <CategorySideBar
+                            categories={categories}
+                            activeCategoryId={activeCategoryId}
+                            baseUrl="/"
+                        />
+                        <SideBar latestPosts={latestPosts} />
+                    </aside>
                 </div>
             </div>
         </main>

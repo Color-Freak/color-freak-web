@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 Color Freak - Blog & Admin
 
-## Getting Started
+---
 
-First, run the development server:
+O **Color Freak** é uma plataforma completa de conteúdo sobre colorimetria e cuidados capilares. O projeto consiste em um blog dinâmico voltado para o usuário final e um painel administrativo para a gestão de matérias, produtos recomendados e parcerias.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Tecnologias Utilizadas
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Framework:** [Next.js 15+](https://nextjs.org/) (App Router)
+- **Linguagem:** [TypeScript](https://www.typescriptlang.org/)
+- **ORM:** [Prisma](https://www.prisma.io/)
+- **Banco de Dados:** PostgreSQL
+- **Autenticação:** JWT com Cookies HTTP-Only (Jose & Bcrypt)
+- **Estilização:** CSS Modules
+- **Conteúdo:** React Markdown
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Funcionalidades
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Área Pública
 
-## Learn More
+- **Home Dinâmica:** Listagem de matérias com paginação e filtros por categoria.
+- **Busca Global:** Filtro de matérias por palavras-chave em tempo real.
+- **Página de Produtos:** Vitrine de recomendações com filtros por categoria.
+- **Leitura de Posts:** Renderização de conteúdo via Markdown com sugestão de produtos relacionados.
+- **SEO Avançado:** Geração dinâmica de metadados, `sitemap.xml` e `robots.txt`.
 
-To learn more about Next.js, take a look at the following resources:
+### Painel Administrativo (CMS)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Autenticação Segura:** Sistema de login protegido por tokens JWT.
+- **Gestão de Conteúdo (CRUD):** Criação, edição e exclusão de posts, categorias, produtos e parceiros.
+- **Relacionamentos complexos:** Sistema de vinculação de múltiplos produtos e categorias a uma única matéria.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Como rodar o projeto
 
-## Deploy on Vercel
+1. **Clone o repositório:**
+    
+    `git clone https://github.com/sua-organizacao/color-freak.git`
+    
+2. **Instale as dependências:**
+    
+    `npm install`
+    
+3. **Configure as variáveis de ambiente:**Snippet de código
+    
+    Crie um arquivo `.env` na raiz do projeto seguindo o modelo:
+    
+    ```
+    DATABASE_URL="sua_url_do_banco"
+    JWT_SECRET="sua_chave_secreta"
+    NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+    ```
+    
+4. **Rode as migrações do Prisma:**
+    
+    `npx prisma migrate dev`
+    
+5. **Inicie o servidor de desenvolvimento:**    
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    `npm run dev`
+    
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 👩‍💻 Autora
+
+**Melissa Perdomo** – Desenvolvedora Full Stack.
+
+Atualmente focada no ecossistema Node.js e TypeScript através da pós-graduação na FIAP.

@@ -40,6 +40,14 @@
     min-width: 0;
 }
 
+.rightColumn {
+  display: flex;
+  flex-direction: column; /* Coloca uma sidebar embaixo da outra */
+  gap: 2.5rem; /* O respiro entre as duas sidebars */
+  width: 300px; /* Trava a largura exata da barra lateral */
+  flex-shrink: 0; /* Impede que os posts espremam a sidebar */
+}
+
 @media (max-width: 1024px) {
     .grid>div {
         width: calc((100% / 2) - 1rem);
