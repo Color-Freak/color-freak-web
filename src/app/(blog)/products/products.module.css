@@ -18,10 +18,8 @@
 
 /* Como usamos flex, precisamos garantir que os cards tenham uma largura base para não esmagarem */
 .grid>div {
-    flex: 1 1 250px;
-    /* O card vai ter no mínimo 250px, e crescer para preencher o espaço se precisar */
-    max-width: 300px;
-    /* Impede que o card fique gigante em telas muito grandes */
+    flex: none;
+    width: calc((100% / 3) - 1.34rem);
 }
 
 .emptyMessage {
@@ -35,7 +33,6 @@
     display: flex;
     gap: 3rem;
     align-items: flex-start;
-    /* Permite que o sticky funcione */
 }
 
 .contentArea {
@@ -43,59 +40,14 @@
     min-width: 0;
 }
 
-/* --- SIDEBAR DE CATEGORIAS --- */
-.sidebar {
-    width: 300px;
-    top: 2rem;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
-    background-color: white;
+@media (max-width: 1024px) {
+    .grid>div {
+        width: calc((100% / 2) - 1rem);
+    }
 }
 
-.sidebarTitle {
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--cor1);
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--cor2);
-}
-
-.categoryList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-}
-
-.categoryLink {
-    text-decoration: none;
-    font-size: 0.9rem;
-    color: var(--cor2);
-    line-height: 1.4;
-    transition: color 0.2s;
-    display: block;
-}
-
-.categoryLink:hover {
-    color: var(--cor4);
-    font-weight: 600;
-}
-
-/* O estado do link quando a categoria está selecionada */
-.categoryLinkActive {
-    text-decoration: none;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    display: block;
-    color: var(--cor4);
-    /* Mantém o roxo */
-    font-weight: 700;
-    /* Mais negrito para destacar que é a página atual */
+@media (max-width: 640px) {
+    .grid>div {
+        width: 100%;
+    }
 }

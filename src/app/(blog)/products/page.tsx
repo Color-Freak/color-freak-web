@@ -3,9 +3,11 @@ import { getCategories } from '@/services/categoryService';
 import { ProductCard } from '@/components/features/ProductCard';
 import { Pagination } from '@/components/features/Pagination';
 import { TopBar } from '@/components/features/TopBar';
-import Link from 'next/link';
+import { CategorySideBar } from '@/components/features/CategorySideBar';
 import styles from './products.module.css';
 import layoutStyles from '@/app/layout.module.css';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
     title: 'Produtos Recomendados | Color Freak',
@@ -61,31 +63,12 @@ export default async function ProdutosPage({ searchParams }: PageProps) {
                         />
                     </div>
 
-                    {/* COLUNA DIREITA: Sidebar de Categorias */}
-                    <aside className={styles.sidebar}>
-                        <h2 className={styles.sidebarTitle}>Filtrar por Categoria</h2>
-                        <ul className={styles.categoryList}>
-                            <li>
-                                <Link
-                                    href="/products"
-                                    className={!activeCategoryId ? styles.categoryLinkActive : styles.categoryLink}
-                                >
-                                    Todos os Produtos
-                                </Link>
-                            </li>
-
-                            {categories.map((category) => (
-                                <li key={category.id}>
-                                    <Link
-                                        href={`/products?categoria=${category.id}`}
-                                        className={activeCategoryId === category.id ? styles.categoryLinkActive : styles.categoryLink}
-                                    >
-                                        {category.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </aside>
+                    {/* COLUNA DIREITA: Nosso Componente Reutilizado! */}
+                    <CategorySideBar 
+                        categories={categories} 
+                        activeCategoryId={activeCategoryId} 
+                        baseUrl="/products"
+                    />
                 </div>
             </div>
         </main>

@@ -20,6 +20,14 @@
   /* O respiro exato entre eles */
 }
 
+.rightColumn {
+  display: flex;
+  flex-direction: column; /* Coloca uma sidebar embaixo da outra */
+  gap: 2.5rem; /* O respiro entre as duas sidebars */
+  width: 300px; /* Trava a largura exata da barra lateral */
+  flex-shrink: 0; /* Impede que os posts espremam a sidebar */
+}
+
 /* Responsividade: Diminui um pouco no celular */
 @media (max-width: 768px) {
   .homeTitle {
