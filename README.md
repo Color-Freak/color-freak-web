@@ -1,6 +1,5 @@
 # 🎨 Color Freak - Blog & Admin
 
----
 
 O **Color Freak** é uma plataforma completa de conteúdo sobre colorimetria e cuidados capilares. O projeto consiste em um blog dinâmico voltado para o usuário final e um painel administrativo para a gestão de matérias, produtos recomendados e parcerias.
 
@@ -40,7 +39,7 @@ O **Color Freak** é uma plataforma completa de conteúdo sobre colorimetria e c
     
     `npm install`
     
-3. **Configure as variáveis de ambiente:**Snippet de código
+3. **Configure as variáveis de ambiente:**
     
     Crie um arquivo `.env` na raiz do projeto seguindo o modelo:
     
