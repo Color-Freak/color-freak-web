@@ -72,12 +72,12 @@ export function PostForm({ categories, products, partners, post }: PostFormProps
 
                         <div className={styles.inputGroup}>
                             <label className={styles.label}>Categorias *</label>
-                            <Select isMulti name="categoryIds" options={categoryOptions} defaultValue={defaultCategories} placeholder="Selecione as categorias..." />
+                            <Select instanceId="post-categories-select" isMulti name="categoryIds" options={categoryOptions} defaultValue={defaultCategories} placeholder="Selecione as categorias..." />
                         </div>
 
                         <div className={styles.inputGroup}>
                             <label className={styles.label}>Produtos Indicados *</label>
-                            <Select isMulti name="productIds" options={productOptions} defaultValue={defaultProducts} placeholder="Selecione os produtos..." />
+                            <Select instanceId="products-categories-select" isMulti name="productIds" options={productOptions} defaultValue={defaultProducts} placeholder="Selecione os produtos..." />
                         </div>
 
                         <div className={styles.inputGroup}>

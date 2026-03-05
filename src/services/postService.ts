@@ -92,6 +92,7 @@ export async function createPost(data: {
   categoryIds: string[]; // <-- NOVO
   productIds: string[];  // <-- NOVO
   partnerId?: string;
+  authorId: string;
 }) {
   const newPost = await prisma.post.create({
     data: {
@@ -101,7 +102,7 @@ export async function createPost(data: {
       imageUrl: data.imageUrl,
       content: data.content,
       published: true,
-      authorId: "d7a8b9c0-1234-5678-abcd-ef1234567890", // O ID hardcoded que usamos antes
+      authorId: data.authorId,
       partnerId: data.partnerId || null,
       categories: {
         connect: data.categoryIds.map(id => ({ id }))

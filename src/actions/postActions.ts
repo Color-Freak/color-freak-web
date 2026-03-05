@@ -1,7 +1,9 @@
 'use server'
 
-import { redirect } from 'next/navigation'
-import { createPost, updatePost, deletePostById } from '@/services/postService' 
+import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
+import { verifyToken } from '@/lib/auth';
+import { createPost, updatePost, deletePostById } from '@/services/postService';
 import { revalidatePath } from 'next/cache';
 
 export async function handleSavePost(formData: FormData) {
@@ -15,7 +17,20 @@ export async function handleSavePost(formData: FormData) {
   const productIds = formData.getAll('productIds') as string[];
   const partnerId = formData.get('partnerId') as string;
 
-  // 2. Agrupa os dados
+  // 3. Lemos o cookie para pegar o Token do usuário logado
+  const cookieStore = await cookies();
+  const token = cookieStore.get('color-freak-token')?.value;
+
+  if (!token) {
+    throw new Error('Usuário não autenticado. Faça login novamente.');
+  }
+
+  const payload = await verifyToken(token);
+
+  if (!payload || !payload.userId) {
+    throw new Error('Sessão inválida.');
+  }
+
   const postData = {
     title,
     subtitle,
@@ -24,10 +39,10 @@ export async function handleSavePost(formData: FormData) {
     content,
     categoryIds,
     productIds,
-    partnerId: partnerId ? partnerId : undefined
+    partnerId: partnerId ? partnerId : undefined,
+    authorId: payload.userId as string
   };
 
-  // 3. O ROTEADOR: Se tem ID, atualiza. Se não tem, cria.
   if (postId) {
     await updatePost(postId, postData);
   } else {

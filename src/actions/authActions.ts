@@ -40,5 +40,5 @@ export async function handleLogin(formData: FormData) {
   });
 
   // 5. Deu tudo certo, manda para o painel!
-  redirect('/admin/posts/new');
+  redirect('/admin/posts');
 }
