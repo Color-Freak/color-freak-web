@@ -70,7 +70,7 @@ export default async function ProdutosPage({ searchParams }: PageProps) {
                         <CategorySideBar
                             categories={categories}
                             activeCategoryId={activeCategoryId}
-                            baseUrl="/"
+                            baseUrl="/products"
                         />
                         <SideBar latestPosts={latestPosts} />
                     </aside>

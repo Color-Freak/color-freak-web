@@ -42,7 +42,7 @@ export default async function Home({
           <div className={styles.contentArea}>
             {/* Se a busca não retornar nada, damos um feedback ao usuário */}
             {posts.length === 0 ? (
-              <p style={{ color: 'var(--cor2)' }}>Nenhuma matéria encontrada para &quot;{searchQuery}&quot;.</p>
+              <p style={{ color: 'var(--cor2)' }}>Nenhuma matéria encontrada.</p>
             ) : (
               <div className={styles.grid}>
                 {posts.map((post: PostWithDetails) => (

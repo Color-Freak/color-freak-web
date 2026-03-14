@@ -67,7 +67,7 @@ export default async function BlogPostPage({
                             <h1 className={styles.title}>{post.title}</h1>
                             <h2 className={styles.subtitle}>{post.subtitle}</h2>
                             <div className={styles.meta}>
-                                por {post.author?.name || 'Redação'} <span>- {formattedDate}</span>
+                                {formattedDate} por <span>{post.author?.name || 'Redação'}</span>
                             </div>
                         </header>
 
