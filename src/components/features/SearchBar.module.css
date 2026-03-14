@@ -32,9 +32,9 @@
 }
 
 .searchIcon {
-  color: var(--cor1);
+  color: var(--cor2);
 }
 
-.button:hover {
-  background-color: var(--cor1);
+.searchIcon:hover {
+  color: var(--cor3);
 }
