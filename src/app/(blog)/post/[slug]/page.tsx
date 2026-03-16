@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
-import ReactMarkdown from 'react-markdown' // 1. Importe a biblioteca
+import Link from 'next/link' // 1. Adicionado para o CTA
+import ReactMarkdown from 'react-markdown'
 import { getPostBySlug, getLatestPosts } from '@/services/postService'
 import { SideBar } from '@/components/features/SideBar'
 import { ProductCard } from '@/components/features/ProductCard'
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     return {
         title: `${post.title} | Color Freak`,
-        description: post.subtitle, // O Google usa isso no resumo da busca
+        description: post.subtitle,
         openGraph: {
             title: post.title,
             description: post.subtitle,
@@ -83,12 +84,22 @@ export default async function BlogPostPage({
                             </div>
                         )}
 
-                        {/* 2. Conteúdo real renderizado direto do banco */}
                         <div className={styles.content}>
                             <ReactMarkdown>
                                 {post.content}
                             </ReactMarkdown>
                         </div>
+
+                        {/* 2. Bloco de Destaque / CTA adicionado aqui */}
+                        <aside className={styles.ctaDestaque}>
+                            <p>
+                                <strong>Aproveite o menor preço!</strong> <br />Compre pelos cards de produtos ao longo desta matéria ou visite nossa página de{' '}
+                                <Link href="/products" className={styles.linkDestaque}>
+                                    Produtos Favoritos
+                                </Link>
+                                , onde reuni todos os itens que realmente funcionam para a saúde do nosso cabelo.
+                            </p>
+                        </aside>
 
                     </article>
 
