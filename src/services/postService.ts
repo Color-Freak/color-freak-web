@@ -136,7 +136,8 @@ export async function getAdminPosts(page: number = 1, limit: number = 10) {
         title: true,
         slug: true,
         published: true,
-        createdAt: true
+        createdAt: true,
+        categories: true
       }
     }),
     prisma.post.count() // Conta o total real de matérias no banco

@@ -6,6 +6,7 @@ import styles from './products.module.css';
 import layoutStyles from '@/app/layout.module.css';
 import DeleteProductButton from './DeleteProductButton';
 import { EditIcon } from '@/components/Icons';
+import { TagList } from '@/components/features/TagList';
 
 // COMO DEVE FICAR:
 export default async function AdminProductsPage() {
@@ -60,13 +61,7 @@ export default async function AdminProductsPage() {
                                     )}
                                 </td>
                                 <td>
-                                    <div className={styles.tagContainer}>
-                                        {product.categories.map(cat => (
-                                            <span key={cat.id} className={styles.tag}>
-                                                #{cat.name}
-                                            </span>
-                                        ))}
-                                    </div>
+                                    <TagList categories={product.categories} />
                                 </td>
                                 <td>
                                     <div className={sharedStyles.actions}>

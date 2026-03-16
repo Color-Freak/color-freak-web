@@ -31,3 +31,12 @@ export type ProductData = {
   partnerId?: string;
   categoryIds: string[]; // <-- Recebe os IDs do React Select
 };
+
+export type Category = {
+    id: string;
+    name: string;
+};
+
+export type TagListProps = {
+    categories?: Category[];
+};

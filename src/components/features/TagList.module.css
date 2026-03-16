@@ -1,0 +1,12 @@
+.tagContainer {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  max-width: max-content;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 1px 0;
+  color: var(--cor3);
+}
