@@ -1,6 +1,7 @@
 .sidebar {
   width: 300px;
-  flex-shrink: 0; /* Impede que o flexbox esprema essa coluna */
+  flex-shrink: 0;
+  /* Impede que o flexbox esprema essa coluna */
   position: relative;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -26,7 +27,8 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem; /* Espaço entre os links */
+  gap: 1.2rem;
+  /* Espaço entre os links */
 }
 
 .link {
@@ -39,6 +41,13 @@
 }
 
 .link:hover {
-  color: var(--cor4); /* Fica roxo ao passar o mouse */
+  color: var(--cor4);
+  /* Fica roxo ao passar o mouse */
   font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+  }
 }

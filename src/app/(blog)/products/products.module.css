@@ -1,61 +1,67 @@
 .title {
-    font-size: 2rem;
-    /* Exatamente como no seu post.module.css */
-    color: var(--cor1);
-    margin-bottom: 2rem;
-    text-align: left;
-    /* Mantendo o alinhamento à esquerda que você prefere */
-    line-height: 1.2;
-}
-
-.grid {
-    display: flex;
-    flex-wrap: wrap;
-    /* A sua regra de ouro do page.module.css */
-    gap: 2rem;
-    /* O respiro exato que você já usa */
-}
-
-/* Como usamos flex, precisamos garantir que os cards tenham uma largura base para não esmagarem */
-.grid>div {
-    flex: none;
-    width: calc((100% / 3) - 1.34rem);
+  font-size: 2rem;
+  color: var(--cor1);
+  margin-bottom: 2rem;
+  text-align: left;
+  line-height: 1.2;
 }
 
 .emptyMessage {
-    color: var(--cor2);
-    /* Usando a sua cor padrão para textos secundários */
-    font-size: 1.1rem;
+  color: var(--cor2);
+  font-size: 1.1rem;
 }
 
-/* --- LAYOUT COM SIDEBAR --- */
 .mainLayout {
-    display: flex;
-    gap: 3rem;
-    align-items: flex-start;
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
 }
 
 .contentArea {
-    flex: 1;
-    min-width: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .rightColumn {
   display: flex;
-  flex-direction: column; /* Coloca uma sidebar embaixo da outra */
-  gap: 2.5rem; /* O respiro entre as duas sidebars */
-  width: 300px; /* Trava a largura exata da barra lateral */
-  flex-shrink: 0; /* Impede que os posts espremam a sidebar */
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.grid > div {
+  flex: none;
+  width: calc((100% / 3) - 1.34rem);
 }
 
 @media (max-width: 1024px) {
-    .grid>div {
-        width: calc((100% / 2) - 1rem);
-    }
+  .mainLayout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .rightColumn {
+    width: 100%;
+  }
+
+  .grid > div {
+    width: calc((100% / 2) - 1rem); /* Reduz de 3 para 2 colunas */
+  }
 }
 
 @media (max-width: 640px) {
-    .grid>div {
-        width: 100%;
-    }
+  .grid > div {
+    width: 100%; /* Reduz de 2 para 1 coluna no celular */
+  }
+  
+  .title {
+    font-size: 1.5rem; /* Ajuste sutil do título para não estourar a tela */
+  }
 }

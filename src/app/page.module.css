@@ -1,36 +1,42 @@
 .mainLayout {
   display: flex;
   gap: 3rem;
-  /* Espaço entre a área de posts e a sidebar */
   align-items: flex-start;
-  /* OBRIGATÓRIO: Permite que o sticky funcione e os itens fiquem alinhados ao topo */
 }
 
-/* Área onde ficam os posts */
 .contentArea {
   flex: 1;
-  /* Ocupa todo o espaço que sobrar depois dos 300px da sidebar */
 }
 
 .grid {
   display: flex;
   flex-wrap: wrap;
-  /* A regra de ouro: permite que os cards pulem de linha */
   gap: 2rem;
-  /* O respiro exato entre eles */
 }
 
 .rightColumn {
   display: flex;
-  flex-direction: column; /* Coloca uma sidebar embaixo da outra */
-  gap: 2.5rem; /* O respiro entre as duas sidebars */
-  width: 300px; /* Trava a largura exata da barra lateral */
-  flex-shrink: 0; /* Impede que os posts espremam a sidebar */
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 300px;
+  flex-shrink: 0;
 }
 
-/* Responsividade: Diminui um pouco no celular */
 @media (max-width: 768px) {
   .homeTitle {
     font-size: 2rem;
+  }
+
+  .mainLayout {
+    flex-direction: column; /* Transforma a linha em coluna (empilha) */
+    gap: 2rem; /* Reduz o respiro geral para caber melhor na tela menor */
+  }
+
+  .rightColumn {
+    width: 100%; /* Remove a trava de 300px e deixa ocupar a tela toda */
+  }
+
+  .grid {
+    gap: 1.5rem; /* Aproxima um pouco mais os cards no celular */
   }
 }

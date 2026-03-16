@@ -44,3 +44,9 @@
   color: var(--cor4);
   font-weight: 600;
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+  }
+}

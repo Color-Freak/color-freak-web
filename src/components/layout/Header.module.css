@@ -1,9 +1,9 @@
 .header {
     width: 100%;
-    height: 120px;
+    height: 130px;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: center 60%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,7 +19,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.5); /* O 0.8 é a força do branco (80%)*/
+    background-color: rgba(255, 255, 255, 0.2); /* O 0.8 é a força do branco (80%)*/
     z-index: -1; /* Joga a máscara para trás do seu conteúdo (logo), mas na frente da imagem */
 }
 
@@ -31,7 +31,7 @@
 }
 
 .logoImage {
-    width: 300px;
+    width: 500px;
     height: 100%;
     object-fit: cover;
     object-position: center;
