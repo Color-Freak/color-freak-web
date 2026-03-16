@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { handleLogin } from '@/actions/authActions'
 import styles from './login.module.css'
-import logoImg from '@/assets/color-freak-logo-white.png'
+import logoImg from '@/assets/1.png'
 
 export default function LoginPage() {
   return (
@@ -15,7 +15,7 @@ export default function LoginPage() {
           <Image 
             src={logoImg}
             alt="Logo Color Freak" 
-            width={180} 
+            width={280} 
             priority // Diz ao navegador para carregar essa imagem primeiro
             style={{ objectFit: 'contain' }}
           />
