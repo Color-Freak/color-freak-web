@@ -11,12 +11,12 @@ export function Header() {
       style={{ backgroundImage: `url(${bgHeader.src})` }}
     >
       <div className={styles.logoContainer}>
-        <Link href="/">
+        <Link href="/" className={styles.logoLink}>
           <Image
             src={logoImg}
             alt="Logo Color Freak"
-            className={styles.logoImage} 
-            priority 
+            className={styles.logoImage}
+            priority
           />
         </Link>
       </div>
