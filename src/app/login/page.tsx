@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { handleLogin } from '@/actions/authActions'
 import styles from './login.module.css'
-import logoImg from '@/assets/color-freak-logo.png'
+import logoImg from '@/assets/color-freak-logo-white.png'
 
 export default function LoginPage() {
   return (
