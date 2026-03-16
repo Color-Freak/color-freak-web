@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
-import Link from 'next/link' // 1. Adicionado para o CTA
 import ReactMarkdown from 'react-markdown'
 import { getPostBySlug, getLatestPosts } from '@/services/postService'
 import { SideBar } from '@/components/features/SideBar'
 import { ProductCard } from '@/components/features/ProductCard'
 import { TopBar } from '@/components/features/TopBar'
+import { TagList } from '@/components/features/TagList'
+import { CallToAction } from '@/components/features/CallToAction'
 
 import layoutStyles from '@/app/layout.module.css'
 import styles from './post.module.css'
@@ -65,11 +66,13 @@ export default async function BlogPostPage({
                     <article className={styles.mainContent}>
 
                         <header className={styles.header}>
+                            <TagList categories={post.categories} />
                             <h1 className={styles.title}>{post.title}</h1>
                             <h2 className={styles.subtitle}>{post.subtitle}</h2>
                             <div className={styles.meta}>
                                 {formattedDate} por <span>{post.author?.name || 'Redação'}</span>
                             </div>
+                            
                         </header>
 
                         {post.imageUrl && (
@@ -90,16 +93,7 @@ export default async function BlogPostPage({
                             </ReactMarkdown>
                         </div>
 
-                        {/* 2. Bloco de Destaque / CTA adicionado aqui */}
-                        <aside className={styles.ctaDestaque}>
-                            <p>
-                                <strong>Aproveite o menor preço!</strong> <br />Compre pelos cards de produtos ao longo desta matéria ou visite nossa página de{' '}
-                                <Link href="/products" className={styles.linkDestaque}>
-                                    Produtos Favoritos
-                                </Link>
-                                , onde reuni todos os itens que realmente funcionam para a saúde do nosso cabelo.
-                            </p>
-                        </aside>
+                        <CallToAction/>
 
                     </article>
 
