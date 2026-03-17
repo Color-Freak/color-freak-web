@@ -1,5 +1,5 @@
 .footer {
-  background-color:var(--cor1);
+  background-color: var(--cor1);
   color: #fff;
   text-align: center;
   padding: 1rem;
@@ -11,4 +11,11 @@
 .text {
   font-size: 0.8rem;
   opacity: 0.8;
+}
+
+.disclaimer {
+  font-size: 0.6rem;
+  color: var(--cor0);
+  margin-top: 0.5rem;
+  text-align: center;
 }

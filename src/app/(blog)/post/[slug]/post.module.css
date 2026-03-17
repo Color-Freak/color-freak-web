@@ -1,3 +1,5 @@
+/* post.module.css */
+
 .header {
   margin-bottom: 3rem;
   text-align: left;
@@ -116,9 +118,18 @@
   margin-bottom: 0.5rem;
 }
 
+.content strong {
+  color: var(--cor1);
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .content a {
-  color: var(--cor4);
+  color: var(--cor3);
   font-weight: 600;
+}
+
+.content a:hover {
   text-decoration: underline;
 }
 
@@ -130,11 +141,6 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 8px;
-}
-
-.content strong {
-  color: var(--cor1);
-  font-weight: 700;
 }
 
 /* --- RESPONSIVIDADE --- */

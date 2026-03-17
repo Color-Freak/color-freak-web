@@ -6,6 +6,7 @@ import { TopBar } from '@/components/features/TopBar';
 import { PostWithDetails } from '@/types'
 import { CategorySideBar } from '@/components/features/CategorySideBar';
 import { getCategories } from '@/services/categoryService';
+import { SocialSideBar } from '@/components/features/SocialSideBar';
 
 import styles from '@/app/page.module.css'
 import layoutStyles from '@/app/layout.module.css'
@@ -61,6 +62,7 @@ export default async function Home({
               activeCategoryId={activeCategoryId}
               baseUrl="/"
             />
+            <SocialSideBar />
           </aside>
 
         </div>

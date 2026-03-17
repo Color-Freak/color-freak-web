@@ -6,6 +6,9 @@ export function Footer() {
       <p className={styles.text}>
         © Color Freak - Blog Editorial Desenvolvido por Melissa Perdomo
       </p>
+      <p className={styles.disclaimer}>
+        *Como associada da Amazon, eu recebo por compras qualificadas.
+      </p>
     </footer>
   )
 }

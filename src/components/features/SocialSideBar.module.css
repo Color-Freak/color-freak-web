@@ -1,0 +1,51 @@
+.container {
+    width: 300px;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background-color: white;
+}
+
+/* Mantém a mesma estética visual das suas outras sidebars */
+.title {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--cor1);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--cor2);
+    margin-bottom: 1.5rem;
+}
+
+.iconGroup {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.iconLink {
+    color: var(--cor1);
+    /* A cor neutra padrão, que passa para o stroke="currentColor" do SVG */
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Interação simples e elegante */
+.iconLink:hover {
+    color: var(--cor3);
+    /* Muda para a sua cor de destaque ao passar o mouse */
+    transform: translateY(-2px);
+    /* Dá um pequeno "pulo" no ícone */
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}

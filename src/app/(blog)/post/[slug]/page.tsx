@@ -7,6 +7,7 @@ import { ProductCard } from '@/components/features/ProductCard'
 import { TopBar } from '@/components/features/TopBar'
 import { TagList } from '@/components/features/TagList'
 import { CallToAction } from '@/components/features/CallToAction'
+import { SocialSideBar } from '@/components/features/SocialSideBar'
 
 import layoutStyles from '@/app/layout.module.css'
 import styles from './post.module.css'
@@ -98,7 +99,6 @@ export default async function BlogPostPage({
                     </article>
 
                     <aside className={styles.rightColumn}>
-                        <SideBar latestPosts={latestPosts} />
                         <div>
                             <div className={styles.productList}>
                                 {post.products?.map((product) => (
@@ -106,6 +106,8 @@ export default async function BlogPostPage({
                                 ))}
                             </div>
                         </div>
+                        <SideBar latestPosts={latestPosts} />
+                        <SocialSideBar />
                     </aside>
 
                 </div>
