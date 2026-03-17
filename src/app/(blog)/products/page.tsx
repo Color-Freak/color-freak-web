@@ -8,6 +8,7 @@ import { CategorySideBar } from '@/components/features/CategorySideBar';
 import styles from './products.module.css';
 import layoutStyles from '@/app/layout.module.css';
 import { SideBar } from '@/components/features/SideBar';
+import { SocialSideBar } from '@/components/features/SocialSideBar';
 
 export const metadata = {
     title: 'Produtos Recomendados | Color Freak',
@@ -73,6 +74,7 @@ export default async function ProdutosPage({ searchParams }: PageProps) {
                             baseUrl="/products"
                         />
                         <SideBar latestPosts={latestPosts} />
+                        <SocialSideBar />
                     </aside>
                 </div>
             </div>
