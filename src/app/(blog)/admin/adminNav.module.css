@@ -1,3 +1,5 @@
+/* adminNav.module.css */
+
 .nav {
   width: 100%;
   background-color: transparent;
@@ -11,7 +13,7 @@
   max-width: 1300px; /* Mantém o mesmo alinhamento dos seus formulários */
   margin: 0 auto;
   padding: 0;
-  justify-content: center;
+  align-items: center;
 }
 
 .link {
@@ -24,6 +26,9 @@
   text-decoration: none;
   transition: all 0.2s ease;
   opacity: 0.6;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .link:hover {
@@ -36,4 +41,8 @@
   opacity: 1;
   color: var(--cor4);
   border-bottom: 2px solid var(--cor4);
+}
+
+.logoutItem {
+  margin-left: auto;
 }

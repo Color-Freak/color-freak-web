@@ -1,8 +1,10 @@
+// AdminNav.tsx
 'use client'
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './adminNav.module.css';
+import { LogoutButton } from '@/components/features/LogoutButton';
 
 export function AdminNav() {
     const pathname = usePathname();
@@ -20,11 +22,11 @@ export function AdminNav() {
                 {navItems.map((item) => {
                     // Verifica se a URL atual começa com o caminho do item (ex: /admin/posts/new também ativa a aba Matérias)
                     const isActive = pathname.startsWith(item.path);
-                    
+
                     return (
                         <li key={item.path}>
-                            <Link 
-                                href={item.path} 
+                            <Link
+                                href={item.path}
                                 className={`${styles.link} ${isActive ? styles.active : ''}`}
                             >
                                 {item.name}
@@ -32,6 +34,9 @@ export function AdminNav() {
                         </li>
                     );
                 })}
+                <li className={styles.logoutItem}>
+                    <LogoutButton />
+                </li>
             </ul>
         </nav>
     );

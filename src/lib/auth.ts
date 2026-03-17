@@ -1,3 +1,4 @@
+// auth.ts
 import { SignJWT, jwtVerify } from 'jose';
 
 if (!process.env.JWT_SECRET) {
@@ -10,7 +11,7 @@ export async function createToken(userId: string) {
     const token = await new SignJWT({ userId })
         .setProtectedHeader({ alg: 'HS256' })
         .setIssuedAt()
-        .setExpirationTime('7d')
+        .setExpirationTime('1h')
         .sign(secretKey);
 
     return token;

@@ -1,27 +1,30 @@
 'use client'
 
+import { useActionState } from 'react' // Boa prática: imports do React no topo
 import Image from 'next/image'
 import { handleLogin } from '@/actions/authActions'
 import styles from './login.module.css'
 import logoImg from '@/assets/1.png'
 
 export default function LoginPage() {
+  const [state, formAction, isPending] = useActionState(handleLogin, null);
+
   return (
     <main className={styles.wrapper}>
       <div className={styles.container}>
-        
-        {/* Container do Logo do Color Freak */}
+
         <div className={styles.logoContainer}>
-          <Image 
+          <Image
             src={logoImg}
-            alt="Logo Color Freak" 
-            width={280} 
-            priority // Diz ao navegador para carregar essa imagem primeiro
+            alt="Logo Color Freak"
+            width={280}
+            priority
             style={{ objectFit: 'contain' }}
           />
         </div>
 
-        <form action={handleLogin} className={styles.form}>
+        <form action={formAction} className={styles.form}>
+
           <div className={styles.inputGroup}>
             <label htmlFor="email" className={styles.label}>E-mail</label>
             <input type="email" id="email" name="email" className={styles.input} required />
@@ -32,11 +35,19 @@ export default function LoginPage() {
             <input type="password" id="password" name="password" className={styles.input} required />
           </div>
 
-          <button type="submit" className={styles.button}>
-            Entrar
+          {/* Exibe a mensagem de erro que vem lá do seu authAction.ts */}
+          {state?.error && (
+            <div className={styles.errorMessage}>
+              {state.error}
+            </div>
+          )}
+
+          {/* O isPending desativa o botão (disabled) para evitar cliques duplos */}
+          <button type="submit" className={styles.button} disabled={isPending}>
+            {isPending ? 'Entrando...' : 'Entrar'}
           </button>
         </form>
-        
+
       </div>
     </main>
   )

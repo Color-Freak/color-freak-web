@@ -8,10 +8,12 @@
 
 /* Criamos essa classe para usar dentro das páginas quando quisermos centralizar */
 .contentContainer {
-  width: 90%;          
+  width: 90%;
   max-width: 1300px;
-  margin: 0 auto;        /* Centraliza */
-  padding: 2rem 0;       /* O respiro vertical */
+  margin: 0 auto;
+  /* Centraliza */
+  padding: 2rem 0;
+  /* O respiro vertical */
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -22,6 +24,46 @@
   max-width: 1300px;
   margin: 0 auto;
   padding: 2rem 0 4rem;
+}
+
+.primaryButton {
+  padding: 0.6rem 1.5rem;
+  background-color: var(--cor3);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+  align-self: flex-end;
+  width: 150px;
+}
+
+.primaryButton:hover {
+  background-color: var(--cor1);
+}
+
+.secondaryButton {
+  padding: 0.6rem 1.5rem;
+  background-color: var(--cor3);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+  align-self: flex-end;
+  width: 150px;
+}
+
+.secondaryButton:hover {
+  background-color: var(--cor1);
 }
 
 /* Ajuste Mobile */

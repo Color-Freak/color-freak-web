@@ -1,3 +1,4 @@
+// authAction.ts
 'use server'
 
 import { redirect } from 'next/navigation';
@@ -6,39 +7,51 @@ import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { createToken } from '@/lib/auth';
 
-export async function handleLogin(formData: FormData) {
+type LoginState = {
+  error: string;
+} | null;
+
+// 1. Adicionamos o 'prevState: any' como primeiro parâmetro obrigatório do hook
+export async function handleLogin(prevState: LoginState, formData: FormData) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
-  // 1. Busca o usuário no banco
   const user = await prisma.user.findUnique({
     where: { email }
   });
 
+  // 2. Trocamos o 'throw new Error' por um 'return' suave
   if (!user) {
-    throw new Error('Usuário não encontrado');
+    return { error: 'Usuário não encontrado' };
   }
 
-  // 2. Compara a senha digitada com a senha criptografada do banco
   const isValidPassword = await bcrypt.compare(password, user.password);
 
+  // 3. Trocamos o 'throw new Error' aqui também
   if (!isValidPassword) {
-    throw new Error('Senha incorreta');
+    return { error: 'E-mail ou senha incorretos' }; // Dica de segurança: mensagens genéricas dificultam a vida de hackers
   }
 
-  // 3. Cria o Token JWT com o ID real do usuário
   const token = await createToken(user.id);
 
-  // 4. Salva o Token em um Cookie HTTP-Only (Segurança máxima: hackers não conseguem ler via JavaScript)
   const cookieStore = await cookies();
   cookieStore.set('color-freak-token', token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     path: '/',
-    maxAge: 60 * 60 * 24 * 7 // 7 dias
+    maxAge: 60 * 60 * 1 // 1 horas
   });
 
-  // 5. Deu tudo certo, manda para o painel!
   redirect('/admin/posts');
+}
+
+export async function handleLogout() {
+  const cookieStore = await cookies();
+
+  // Destrói o token apagando o cookie
+  cookieStore.delete('color-freak-token');
+
+  // Redireciona de volta para a tela inicial ou de login
+  redirect('/');
 }
