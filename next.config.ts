@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
       { hostname: 'd2l4mdyojly1ma.cloudfront.net' },
       { hostname: 'drive.google.com' },
       { hostname: 'lolafromriousa.com' },
+      { hostname: 'down-br.img.susercontent.com' },
     ],
   },
 };
