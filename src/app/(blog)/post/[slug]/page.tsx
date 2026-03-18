@@ -151,6 +151,8 @@ export default async function BlogPostPage({
                     </article>
 
                     <aside className={styles.rightColumn}>
+                        <SideBar latestPosts={latestPosts} />
+                        
                         <div>
                             <div className={styles.productList}>
                                 {post.products?.map((product) => (
@@ -158,7 +160,7 @@ export default async function BlogPostPage({
                                 ))}
                             </div>
                         </div>
-                        <SideBar latestPosts={latestPosts} />
+                        
                         <SocialSideBar />
                     </aside>
 
