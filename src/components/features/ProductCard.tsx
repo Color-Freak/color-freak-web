@@ -1,3 +1,6 @@
+"use client"
+
+import { sendGAEvent } from '@next/third-parties/google'
 import Image from 'next/image'
 import { Product } from '@prisma/client' // Importa o tipo exato do banco
 import styles from './ProductCard.module.css'
@@ -30,9 +33,10 @@ export function ProductCard({ product }: ProductCardProps) {
             {/* 4. Botão de Compra Afiliado */}
             <a
                 href={product.affiliateLink}
-                target="_blank" // Abre em nova aba
-                rel="noopener noreferrer" // Regra de segurança obrigatória para links externos
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.button}
+                onClick={() => sendGAEvent({ event: 'clique_amazon', product_name: product.name })}
             >
                 Comprar
             </a>
