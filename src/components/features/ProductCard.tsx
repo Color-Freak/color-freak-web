@@ -38,7 +38,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 className={styles.button}
                 onClick={() => sendGAEvent({ event: 'clique_amazon', product_name: product.name })}
             >
-                Comprar
+                Ver na Amazon
             </a>
 
         </div>
