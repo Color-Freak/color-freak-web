@@ -1,26 +1,22 @@
 .card {
-  /* Mesma base visual da sua SideBar */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 1.5rem;
   background-color: white;
-  
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza a foto e os textos */
-  gap: 1rem; /* Dá um respiro uniforme entre os elementos internos */
+  align-items: center;
+  gap: 1rem;
 }
 
-/* OBRIGATÓRIO PARA A IMAGEM DO NEXT.JS */
 .imageWrapper {
   position: relative;
   width: 100%;
-  height: 180px; 
+  height: 180px;
 }
 
 .image {
-  /* Para embalagens de cosméticos, 'contain' é melhor que 'cover', pois não corta o frasco */
-  object-fit: contain; 
+  object-fit: contain;
   object-position: center;
 }
 
@@ -35,12 +31,11 @@
 .price {
   font-size: 1.1rem;
   font-weight: 800;
-  color: var(--cor4); /* Destaca o preço com o nosso Roxo */
+  color: var(--cor4);
 }
 
-/* Botão de Compra Preenchido */
 .button {
-  width: 100%; /* Botão ocupa toda a largura do card */
+  width: 100%;
   padding: 0.8rem;
   background-color: var(--cor4);
   color: white;
@@ -57,4 +52,58 @@
 
 .button:hover {
   background-color: var(--cor1);
+}
+
+.horizontal {
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1.5rem;
+  overflow: hidden;
+  max-width: 80%;
+  margin: auto;
+}
+
+.horizontal .imageWrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 4px;
+}
+
+.horizontal .name {
+  flex: 1;
+  text-align: left;
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.horizontal .button {
+  width: auto;
+  margin-top: 0;
+  padding: 0.8rem 1.5rem;
+  white-space: nowrap;
+  color: white;
+}
+
+.horizontal .button:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .horizontal {
+    flex-direction: column;
+  }
+
+  .horizontal .imageWrapper {
+    width: 100%;
+    height: 180px;
+    border: none;
+  }
+
+  .horizontal .name {
+    text-align: center;
+  }
+
+  .horizontal .button {
+    width: 100%;
+  }
 }

@@ -2,16 +2,18 @@
 
 import { sendGAEvent } from '@next/third-parties/google'
 import Image from 'next/image'
-import { Product } from '@prisma/client' // Importa o tipo exato do banco
+import { Product } from '@prisma/client' 
 import styles from './ProductCard.module.css'
 
 interface ProductCardProps {
-    product: Product
+    product: Product;
+    variant?: 'vertical' | 'horizontal';
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, variant = 'vertical' }: ProductCardProps) {
+    const cardClass = `${styles.card} ${variant === 'horizontal' ? styles.horizontal : ''}`;
     return (
-        <div className={styles.card}>
+        <div className={cardClass}>
 
             {/* 1. Imagem do Produto */}
             <div className={styles.imageWrapper}>

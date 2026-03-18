@@ -8,6 +8,7 @@ import { TopBar } from '@/components/features/TopBar'
 import { TagList } from '@/components/features/TagList'
 import { CallToAction } from '@/components/features/CallToAction'
 import { SocialSideBar } from '@/components/features/SocialSideBar'
+import { InlineProductFetcher } from '@/components/features/InlineProductFetcher'
 
 import layoutStyles from '@/app/layout.module.css'
 import styles from './post.module.css'
@@ -75,7 +76,7 @@ export default async function BlogPostPage({
                             <div className={styles.meta}>
                                 {formattedDate} por <span>{post.author?.name || 'Redação'}</span>
                             </div>
-                            
+
                         </header>
 
                         {post.imageUrl && (
@@ -91,12 +92,61 @@ export default async function BlogPostPage({
                         )}
 
                         <div className={styles.content}>
-                            <ReactMarkdown>
+                            <ReactMarkdown
+                                components={{
+                                    // 1. Interceptamos o Parágrafo (<p>)
+                                    p: (props) => {
+                                        const { node, children } = props;
+
+                                        // Criamos uma tipagem local limpa para os nós da árvore do Markdown
+                                        type MarkdownNode = {
+                                            tagName?: string;
+                                            properties?: {
+                                                href?: string;
+                                            };
+                                        };
+
+                                        // Forçamos o TypeScript a entender o formato dos filhos sem usar 'any'
+                                        const childrenNodes = node?.children as MarkdownNode[] | undefined;
+
+                                        // Verifica se algum filho deste parágrafo é o nosso link de produto
+                                        const hasProduct = childrenNodes?.some(
+                                            (child) => child.tagName === 'a' && child.properties?.href?.startsWith('#produto:')
+                                        );
+
+                                        if (hasProduct) {
+                                            // Se tem produto, renderiza uma <div> para manter o HTML válido
+                                            return <div>{children}</div>;
+                                        }
+
+                                        // Se for texto normal, renderiza o <p> padrão
+                                        return <p>{children}</p>;
+                                    },
+
+                                    // 2. Interceptamos o Link (<a>)
+                                    a: (props) => {
+                                        const href = props.href || '';
+
+                                        if (href.startsWith('#produto:')) {
+                                            // Limpa o prefixo e extrai apenas o ID do banco
+                                            const productId = href.replace('#produto:', '');
+                                            return <InlineProductFetcher id={productId} />;
+                                        }
+
+                                        // Links normais do blog continuam funcionando normalmente
+                                        return (
+                                            <a href={href} target="_blank" rel="noopener noreferrer">
+                                                {props.children}
+                                            </a>
+                                        );
+                                    }
+                                }}
+                            >
                                 {post.content}
                             </ReactMarkdown>
                         </div>
 
-                        <CallToAction/>
+                        <CallToAction />
 
                     </article>
 

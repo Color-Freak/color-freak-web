@@ -133,7 +133,7 @@
   text-decoration: underline;
 }
 
-.content img {
+.content img:not([class]) {
   display: block;
   margin: 2rem auto;
   max-width: 400px;
@@ -159,13 +159,11 @@
 @media (max-width: 768px) {
   .imageWrapper {
     height: 250px;
-    /* Reduz a altura da imagem no celular para não engolir a tela inteira */
     margin-bottom: 2rem;
   }
 
   .title {
     font-size: 1.5rem;
-    /* Ajuste sutil para evitar títulos gigantes quebrando em muitas linhas */
   }
 
   .subtitle {
@@ -180,7 +178,7 @@
     font-size: 1.2rem;
   }
 
-  .content img {
+  .content img:not([class]) {
     max-height: 350px;
     margin: 1.5rem auto;
   }
