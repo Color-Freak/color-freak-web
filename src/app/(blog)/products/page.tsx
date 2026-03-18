@@ -42,7 +42,7 @@ export default async function ProdutosPage({ searchParams }: PageProps) {
 
                 <TopBar />
 
-                <h1 className={styles.title}>Produtos Favoritos</h1>
+                <h1 className={styles.title}>Produtos Indicados</h1>
 
                 <div className={styles.mainLayout}>
                     {/* COLUNA ESQUERDA: Grade de Produtos */}
