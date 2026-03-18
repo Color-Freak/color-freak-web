@@ -10,6 +10,8 @@ import layoutStyles from '@/app/layout.module.css';
 import { SideBar } from '@/components/features/SideBar';
 import { SocialSideBar } from '@/components/features/SocialSideBar';
 
+export const revalidate = 3600;
+
 export const metadata = {
     title: 'Produtos Recomendados | Color Freak',
     description: 'Confira nossa seleção de produtos recomendados para cabelos descoloridos e coloridos.',

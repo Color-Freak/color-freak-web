@@ -31,6 +31,7 @@ export async function handleSavePartner(formData: FormData) {
   // Limpa o cache da listagem de parceiros e também do formulário de matérias
   revalidatePath('/admin/partners');
   revalidatePath('/admin/posts/new'); 
+  revalidatePath('/admin/products/new'); 
   redirect('/admin/partners');
 }
 

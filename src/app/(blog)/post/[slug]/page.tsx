@@ -12,6 +12,8 @@ import { SocialSideBar } from '@/components/features/SocialSideBar'
 import layoutStyles from '@/app/layout.module.css'
 import styles from './post.module.css'
 
+export const revalidate = 3600;
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const post = await getPostBySlug(slug);

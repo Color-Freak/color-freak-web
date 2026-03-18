@@ -18,6 +18,7 @@ export async function handleSaveCategory(formData: FormData) {
 
   // Limpa o cache da listagem e do formulário de matérias
   revalidatePath('/admin/categories');
+  revalidatePath('/admin/products/new');
   revalidatePath('/admin/posts/new'); 
   redirect('/admin/categories');
 }
