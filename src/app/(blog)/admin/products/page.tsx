@@ -28,7 +28,7 @@ export default async function AdminProductsPage() {
                         <tr>
                             <th className={styles.columnImg}>Imagem</th>
                             <th>Produto</th>
-                            <th>Descrição</th>
+                            <th>Atalho Markdown</th>
                             <th className={styles.columnCategories}>Categorias</th>
                             <th className={styles.columnActions}>Ações</th>
                         </tr>
@@ -54,11 +54,9 @@ export default async function AdminProductsPage() {
                                     <span className={sharedStyles.mainText}>{product.name}</span>
                                 </td>
                                 <td>
-                                    {product.description && (
-                                        <span className={`${sharedStyles.subText} ${styles.truncatedText}`}>
-                                            {product.description}
-                                        </span>
-                                    )}
+                                    <code style={{ userSelect: 'all', fontSize: '0.85rem', color: '#555' }}>
+                                        {`[${product.name}](#produto:${product.id})`}
+                                    </code>
                                 </td>
                                 <td>
                                     <TagList categories={product.categories} />
@@ -75,7 +73,7 @@ export default async function AdminProductsPage() {
                         ))}
                         {products.length === 0 && (
                             <tr>
-                                <td colSpan={4} className={styles.centerText}>Nenhum produto encontrado.</td>
+                                <td colSpan={5} className={styles.centerText}>Nenhum produto encontrado.</td>
                             </tr>
                         )}
                     </tbody>
