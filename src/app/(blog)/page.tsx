@@ -21,8 +21,6 @@ export default async function Home({
   const searchQuery = params.q || '';
   const activeCategoryId = params.categoria;
 
-  console.log("➡️ 1. A página pegou a categoria da URL:", activeCategoryId);
-
   // 3. Adicionamos a busca de categorias no nosso fluxo paralelo
   const [paginatedData, latestPosts, categoryData] = await Promise.all([
     getPosts(currentPage, 9, searchQuery, activeCategoryId),

@@ -3,7 +3,6 @@ import { Prisma } from '@prisma/client';
 
 // Busca matérias para a listagem da home e aceita filtro por palavra chave
 export async function getPosts(page: number = 1, limit: number = 9, search?: string, categoryId?: string) {
-  console.log("⚙️ 2. O motor recebeu a categoria:", categoryId);
   const skip = (page - 1) * limit;
 
   const whereCondition: Prisma.PostWhereInput = {

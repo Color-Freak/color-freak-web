@@ -2,7 +2,7 @@
 
 import { sendGAEvent } from '@next/third-parties/google'
 import Image from 'next/image'
-import { Product } from '@prisma/client' 
+import { Product } from '@prisma/client'
 import styles from './ProductCard.module.css'
 
 interface ProductCardProps {
@@ -12,6 +12,17 @@ interface ProductCardProps {
 
 export function ProductCard({ product, variant = 'vertical' }: ProductCardProps) {
     const cardClass = `${styles.card} ${variant === 'horizontal' ? styles.horizontal : ''}`;
+
+    // 1. Lemos o link e transformamos tudo em minúsculo para evitar erros de leitura
+    const link = product.affiliateLink.toLowerCase();
+
+    // 2. JS verifica se a URL contém as palavras-chave (incluindo links encurtados comuns)
+    const isShopee = link.includes('shopee') || link.includes('shp.ee');
+
+    // 3. Definimos o texto e o evento do Analytics de forma dinâmica
+    const buttonText = isShopee ? 'Ver na Shopee' : 'Ver na Amazon';
+    const analyticsEvent = isShopee ? 'clique_shopee' : 'clique_amazon';
+
     return (
         <div className={cardClass}>
 
@@ -32,15 +43,15 @@ export function ProductCard({ product, variant = 'vertical' }: ProductCardProps)
             {/* 2. Nome do Produto */}
             <h4 className={styles.name}>{product.name}</h4>
 
-            {/* 4. Botão de Compra Afiliado */}
+            {/* 4. Botão de Compra Afiliado Dinâmico */}
             <a
                 href={product.affiliateLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.button}
-                onClick={() => sendGAEvent({ event: 'clique_amazon', product_name: product.name })}
+                onClick={() => sendGAEvent({ event: analyticsEvent, product_name: product.name })}
             >
-                Ver na Amazon
+                {buttonText}
             </a>
 
         </div>
