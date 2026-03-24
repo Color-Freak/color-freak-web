@@ -27,3 +27,37 @@
 .centerText {
   text-align: center;
 }
+
+/* ---- Atalho Markdown ---- */
+.shortcode {
+  user-select: all;
+  font-size: 0.85rem;
+  color: #555;
+  background-color: #f9f9f9;
+  /* Um fundinho cinza para destacar que é um código */
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+/* ---- Etiquetas de Afiliado ---- */
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.badge:hover {
+  text-decoration: none;
+}
+
+.badgeShopee {
+  background-color: #ee4d2d;
+}
+
+.badgeAmazon {
+  background-color: #ff9900;
+}

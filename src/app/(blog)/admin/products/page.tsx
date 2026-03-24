@@ -8,7 +8,25 @@ import DeleteProductButton from './DeleteProductButton';
 import { EditIcon } from '@/components/Icons';
 import { TagList } from '@/components/features/TagList';
 
-// COMO DEVE FICAR:
+function getAffiliateBadge(link: string) {
+    if (!link) return null;
+    const lowerLink = link.toLowerCase();
+
+    if (lowerLink.includes('shopee') || lowerLink.includes('shp.ee')) {
+        return (
+            <a href={link} target="_blank" rel="noopener noreferrer" className={`${styles.badge} ${styles.badgeShopee}`} title="Ver preço">
+                Shopee
+            </a>
+        );
+    }
+
+    return (
+        <a href={link} target="_blank" rel="noopener noreferrer" className={`${styles.badge} ${styles.badgeAmazon}`} title="Ver preço">
+            Amazon
+        </a>
+    );
+}
+
 export default async function AdminProductsPage() {
     const { products } = await getProducts(undefined, 1, 100);
 
@@ -28,6 +46,7 @@ export default async function AdminProductsPage() {
                         <tr>
                             <th className={styles.columnImg}>Imagem</th>
                             <th>Produto</th>
+                            <th>Afiliado</th>
                             <th>Atalho Markdown</th>
                             <th className={styles.columnCategories}>Categorias</th>
                             <th className={styles.columnActions}>Ações</th>
@@ -54,6 +73,9 @@ export default async function AdminProductsPage() {
                                     <span className={sharedStyles.mainText}>{product.name}</span>
                                 </td>
                                 <td>
+                                    {getAffiliateBadge(product.affiliateLink)}
+                                </td>
+                                <td>
                                     <code style={{ userSelect: 'all', fontSize: '0.85rem', color: '#555' }}>
                                         {`[${product.name}](#produto:${product.id})`}
                                     </code>
@@ -73,7 +95,7 @@ export default async function AdminProductsPage() {
                         ))}
                         {products.length === 0 && (
                             <tr>
-                                <td colSpan={5} className={styles.centerText}>Nenhum produto encontrado.</td>
+                                <td colSpan={6} className={styles.centerText}>Nenhum produto encontrado.</td>
                             </tr>
                         )}
                     </tbody>
