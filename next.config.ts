@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
       { hostname: 'drive.google.com' },
       { hostname: 'lolafromriousa.com' },
       { hostname: 'down-br.img.susercontent.com' },
+      { hostname: 'http2.mlstatic.com'},
     ],
   },
 };
