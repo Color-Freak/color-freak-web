@@ -64,7 +64,7 @@ export default async function SobrePage() {
                             </div>
                         </div>
 
-                        <p>Explore os conteúdos, pegue suas luvas e pincel, e sinta-se em casa! 💜</p>
+                        <p>Aproveite os conteúdos, pegue suas luvas e pincel, e sinta-se em casa! 💜</p>
 
                         <CallToAction />
                     </article>

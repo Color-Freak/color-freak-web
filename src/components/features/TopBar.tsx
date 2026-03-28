@@ -11,15 +11,10 @@ interface TopBarProps {
 
 export function TopBar({ showSearch = false }: TopBarProps) {
     const pathname = usePathname();
-
-    // Regras de negócio para saber qual aba está ativa:
-    // O Blog é ativo se estivermos na Home ('/') ou lendo uma matéria (ex: '/post/slug')
     const isBlogActive = pathname === '/' || pathname.startsWith('/post');
-
-    // Os Produtos são ativos apenas dentro da rota de produtos
     const isProductsActive = pathname.startsWith('/products');
-
     const isAboutActive = pathname.startsWith('/about');
+    const isGuideActive = pathname.startsWith('/label-guide');
 
     return (
         <div className={styles.container}>
@@ -39,6 +34,14 @@ export function TopBar({ showSearch = false }: TopBarProps) {
                             className={`${styles.link} ${isProductsActive ? styles.active : ''}`}
                         >
                             Produtos
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            href="/label-guide"
+                            className={`${styles.link} ${isGuideActive ? styles.active : ''}`}
+                        >
+                            Guia de Rótulos
                         </Link>
                     </li>
                     <li>
