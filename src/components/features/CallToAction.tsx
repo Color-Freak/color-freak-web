@@ -5,7 +5,7 @@ export function CallToAction() {
     return (
         <aside className={styles.ctaDestaque}>
             <p>
-                <strong>Aproveite o menor preço!</strong> <br />Compre pelos cards de produtos ao longo desta matéria ou visite nossa página de{' '}
+                <strong>Aproveite o menor preço!</strong> <br />Compre pelos cards de produtos ao longo das matérias ou visite nossa página de{' '}
                 <Link href="/products" className={styles.linkDestaque}>
                     Produtos Indicados
                 </Link>
