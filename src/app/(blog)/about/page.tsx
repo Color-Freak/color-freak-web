@@ -9,6 +9,12 @@ import { SideBar } from '@/components/features/SideBar';
 import { SocialSideBar } from '@/components/features/SocialSideBar';
 import { TopBar } from '@/components/features/TopBar';
 import { CallToAction } from '@/components/features/CallToAction';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Sobre | Color Freak',
+    description: 'Conheça o Color Freak: um blog com conteúdo técnico e real sobre cuidados com cabelo colorido, descolorido, crespo, cronograma capilar e cuidados que mantém os fios saudáveis.',
+};
 
 export default async function SobrePage() {
     const latestPosts = await getLatestPosts(5);

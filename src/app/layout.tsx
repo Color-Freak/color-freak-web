@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     default: 'Color Freak | Cabelo Colorido, Descoloração e Cuidados Reais',
     template: '%s | Color Freak'
   },
-  description: 'Conteúdo técnico e real sobre cabelo colorido, crespo, descoloração global, cronograma capilar e cuidados que mantém os fios saudáveis.',
+  description: 'Conteúdo técnico e real sobre cabelo colorido, descolorido, crespo, cronograma capilar e cuidados que mantém os fios saudáveis.',
   robots: {
     index: true,
     follow: true,
