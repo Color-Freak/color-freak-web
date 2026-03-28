@@ -7,6 +7,10 @@ import layoutStyles from '@/app/layout.module.css';
 import DeleteProductButton from './DeleteProductButton';
 import { EditIcon } from '@/components/Icons';
 import { TagList } from '@/components/features/TagList';
+import { Pagination } from '@/components/features/Pagination';
+import { PageProps } from '@/types';
+import { AdminFilterBar } from '@/components/features/AdminFilterBar';
+import { getCategories } from '@/services/categoryService';
 
 function getAffiliateBadge(link: string) {
     if (!link) return null;
@@ -27,8 +31,20 @@ function getAffiliateBadge(link: string) {
     );
 }
 
-export default async function AdminProductsPage() {
-    const { products } = await getProducts(undefined, 1, 100);
+export default async function AdminProductsPage({ searchParams }: PageProps) {
+    // 1. Lemos a URL que a nossa barra de filtros acabou de atualizar
+    const resolvedParams = await searchParams;
+    const currentPage = Number(resolvedParams.page) || 1;
+
+    // 2. Extraímos a busca e a categoria. Se estiverem vazias, passamos undefined para o banco ignorar
+    const searchQuery = resolvedParams.search ? String(resolvedParams.search) : undefined;
+    const categoryId = resolvedParams.category ? String(resolvedParams.category) : undefined;
+
+    // 3. Agora sim! Passamos as variáveis capturadas para a função na ordem exata
+    const { products, totalPages } = await getProducts(searchQuery, currentPage, 10, categoryId);
+
+    // 4. Buscamos a lista de categorias para popular o <select>
+    const { categories } = await getCategories(1, 100);
 
     return (
         <div className={layoutStyles.contentContainer}>
@@ -36,10 +52,16 @@ export default async function AdminProductsPage() {
 
                 <div className={sharedStyles.header}>
                     <h1 className={sharedStyles.title}>Produtos</h1>
-                    <Link href="/admin/products/new" className={sharedStyles.newButton}>
+
+                    <Link href="/admin/products/new" className={layoutStyles.primaryButton}>
                         + Novo Produto
                     </Link>
                 </div>
+
+                <AdminFilterBar
+                    categories={categories}
+                    placeholder="Buscar por nome ou atalho do produto..."
+                />
 
                 <table className={sharedStyles.table}>
                     <thead>
@@ -100,6 +122,13 @@ export default async function AdminProductsPage() {
                         )}
                     </tbody>
                 </table>
+
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    baseUrl="/admin/products"
+                />
+
             </div>
         </div>
     );

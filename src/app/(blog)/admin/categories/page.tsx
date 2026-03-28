@@ -23,7 +23,7 @@ export default async function AdminCategoriesPage({ searchParams }: PageProps) {
 
                 <div className={styles.header}>
                     <h1 className={styles.title}>Categorias</h1>
-                    <Link href="/admin/categories/new" className={styles.newButton}>
+                    <Link href="/admin/categories/new" className={layoutStyles.primaryButton}>
                         + Nova Categoria
                     </Link>
                 </div>

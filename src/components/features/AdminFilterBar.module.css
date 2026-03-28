@@ -1,0 +1,38 @@
+.filterForm {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    align-items: center;
+}
+
+/* O input de texto cresce e ocupa o espaço que sobrar */
+.filterInput {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    flex: 1;
+    background-color: white;
+}
+
+/* O select de categorias mantém o seu tamanho natural */
+.filterSelect {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: white;
+    color: var(--cor2);
+}
+
+.filterForm button {
+    margin-top: 0;
+}
+
+/* Responsividade para o painel no celular */
+@media (max-width: 768px) {
+    .filterForm {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

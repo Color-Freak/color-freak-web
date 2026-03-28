@@ -33,10 +33,18 @@ export type ProductData = {
 };
 
 export type Category = {
-    id: string;
-    name: string;
+  id: string;
+  name: string;
 };
 
 export type TagListProps = {
-    categories?: Category[];
+  categories?: Category[];
+};
+
+export type PageProps = {
+  searchParams: Promise<{
+    page?: string;
+    search?: string;
+    category?: string;
+  }>;
 };

@@ -1,3 +1,5 @@
+/* src/app/layout.module.css */
+
 /* O main agora ocupa a tela toda, permitindo que o Banner estique */
 .main {
   width: 100%;
@@ -28,7 +30,7 @@
 
 .primaryButton {
   padding: 0.6rem 1.5rem;
-  background-color: var(--cor3);
+  background-color: var(--cor4);
   color: white;
   border: none;
   border-radius: 4px;
@@ -39,7 +41,8 @@
   transition: background-color 0.2s;
   margin-top: 1rem;
   align-self: flex-end;
-  width: 150px;
+  width: 200px;
+  text-align: center;
 }
 
 .primaryButton:hover {
@@ -59,7 +62,8 @@
   transition: background-color 0.2s;
   margin-top: 1rem;
   align-self: flex-end;
-  width: 150px;
+  width: 200px;
+  text-align: center;
 }
 
 .secondaryButton:hover {

@@ -21,13 +21,13 @@ type PageProps = {
     searchParams: Promise<{ categoria?: string; page?: string }>;
 };
 
-export default async function ProdutosPage({ searchParams }: PageProps) {
+export default async function ProductsPage({ searchParams }: PageProps) {
     const resolvedParams = await searchParams;
     const activeCategoryId = resolvedParams.categoria;
 
     const currentPage = Number(resolvedParams.page) || 1;
     const [productData, latestPosts, categoryData] = await Promise.all([
-        getProducts(activeCategoryId, currentPage, 12),
+        getProducts(undefined, currentPage, 12, activeCategoryId),
         getLatestPosts(5),
         getCategories(1, 100)
     ]);

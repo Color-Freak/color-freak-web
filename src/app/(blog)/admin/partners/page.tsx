@@ -23,7 +23,7 @@ export default async function AdminPartnersPage({ searchParams }: PageProps) {
 
                 <div className={styles.header}>
                     <h1 className={styles.title}>Parceiros</h1>
-                    <Link href="/admin/partners/new" className={styles.newButton}>
+                    <Link href="/admin/partners/new" className={layoutStyles.primaryButton}>
                         + Novo Parceiro
                     </Link>
                 </div>

@@ -120,13 +120,26 @@ export async function createPost(data: {
   return newPost;
 }
 
-// Busca os posts para a listagem do admin
-export async function getAdminPosts(page: number = 1, limit: number = 10) {
+// Busca os posts para a listagem do admin e aceita filtros
+export async function getAdminPosts(page: number = 1, limit: number = 10, search?: string, categoryId?: string) {
   const skip = (page - 1) * limit;
+
+  // Montamos a regra de busca usando a tipagem nativa do Prisma
+  const whereCondition: Prisma.PostWhereInput = {
+    // Se houver busca, procura no título ignorando maiúsculas/minúsculas
+    ...(search && {
+      title: { contains: search, mode: 'insensitive' }
+    }),
+    // Se houver categoria, filtra pela relação
+    ...(categoryId && {
+      categories: { some: { id: categoryId } }
+    }),
+  };
 
   // Promise.all executa as duas consultas no banco ao mesmo tempo para ganhar velocidade
   const [posts, total] = await Promise.all([
     prisma.post.findMany({
+      where: whereCondition, // 1. Aplica o filtro na busca das matérias
       skip,
       take: limit,
       orderBy: { createdAt: 'desc' },
@@ -139,7 +152,9 @@ export async function getAdminPosts(page: number = 1, limit: number = 10) {
         categories: true
       }
     }),
-    prisma.post.count() // Conta o total real de matérias no banco
+    prisma.post.count({
+      where: whereCondition // 2. Aplica o mesmo filtro na contagem para a paginação não quebrar
+    })
   ]);
 
   const totalPages = Math.ceil(total / limit);

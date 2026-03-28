@@ -1,12 +1,17 @@
 import { prisma } from '../lib/prisma';
 import { ProductData } from '@/types';
+import { Prisma } from '@prisma/client';
 
-export async function getProducts(categoryId?: string, page: number = 1, limit: number = 12) {
+export async function getProducts(searchQuery?: string, page: number = 1, limit: number = 12, categoryId?: string) {
     const skip = (page - 1) * limit;
 
-    const whereClause = categoryId ? {
-        categories: { some: { id: categoryId } }
-    } : {};
+    // Tipamos rigorosamente com a interface do Prisma
+    const whereClause: Prisma.ProductWhereInput = {
+        // Se houver texto, busca no nome ignorando maiúsculas/minúsculas
+        ...(searchQuery ? { name: { contains: searchQuery, mode: 'insensitive' } } : {}),
+        // Se houver categoria, filtra pela relação
+        ...(categoryId ? { categories: { some: { id: categoryId } } } : {})
+    };
 
     const [products, totalCount] = await Promise.all([
         prisma.product.findMany({

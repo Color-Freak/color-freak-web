@@ -6,15 +6,23 @@ import DeleteButton from './DeleteButton';
 import { EditIcon } from '@/components/Icons';
 import { Pagination } from '@/components/features/Pagination';
 import { TagList } from '@/components/features/TagList';
-
-type PageProps = {
-    searchParams: Promise<{ page?: string }>;
-};
+import { PageProps } from '@/types';
+import { AdminFilterBar } from '@/components/features/AdminFilterBar';
+import { getCategories } from '@/services/categoryService';
 
 export default async function AdminPostsPage({ searchParams }: PageProps) {
     const resolvedParams = await searchParams;
     const currentPage = Number(resolvedParams.page) || 1;
-    const { posts, totalPages } = await getAdminPosts(currentPage, 10);
+
+    // 1. Lemos os parâmetros de busca e categoria da URL
+    const searchQuery = resolvedParams.search ? String(resolvedParams.search) : undefined;
+    const categoryId = resolvedParams.category ? String(resolvedParams.category) : undefined;
+
+    // 2. Passamos os filtros para a função
+    const { posts, totalPages } = await getAdminPosts(currentPage, 10, searchQuery, categoryId);
+
+    // 3. Buscamos a lista de categorias para popular o <select>
+    const { categories } = await getCategories(1, 100);
 
     return (
         <div className={layoutStyles.contentContainer}>
@@ -22,10 +30,15 @@ export default async function AdminPostsPage({ searchParams }: PageProps) {
 
                 <div className={styles.header}>
                     <h1 className={styles.title}>Matérias Publicadas</h1>
-                    <Link href="/admin/posts/new" className={styles.newButton}>
+                    <Link href="/admin/posts/new" className={layoutStyles.primaryButton}>
                         + Nova Matéria
                     </Link>
                 </div>
+
+                <AdminFilterBar
+                    categories={categories}
+                    placeholder="Buscar por nome ou atalho do produto..."
+                />
 
                 <table className={styles.table}>
                     <thead>
