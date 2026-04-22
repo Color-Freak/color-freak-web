@@ -13,7 +13,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'Sobre | Color Freak',
-    description: 'Conheça o Color Freak: um blog com conteúdo técnico e real sobre cuidados com cabelo colorido, descolorido, crespo, cronograma capilar e cuidados que mantém os fios saudáveis.',
+    description: 'Conheça o Color Freak: um blog com conteúdo técnico e real sobre cuidados com cabelo natural, colorido, descolorido, cronograma capilar e cuidados que mantém os fios saudáveis.',
 };
 
 export default async function SobrePage() {
