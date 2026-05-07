@@ -7,7 +7,7 @@ import { handleSaveProduct } from '@/actions/productActions'
 import { Category, Partner, Product } from '@prisma/client'
 import styles from '@/app/(blog)/admin/form.module.css'
 import layoutStyles from '@/app/layout.module.css'
-import { BackButton } from '@/components/BackButton'
+import { BackButton } from '@/components/features/BackButton'
 
 interface ProductFormProps {
     categories: Category[];

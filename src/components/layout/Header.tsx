@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import styles from './Header.module.css' // Importação do CSS Module
+import styles from './Header.module.css'
 import Image from 'next/image'
 import bgHeader from '@/assets/bgpuro1.png'
 import logoImg from '@/assets/color-freak-logo-white.png'

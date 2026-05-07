@@ -7,7 +7,7 @@ import { handleSavePost } from '@/actions/postActions'
 import { Category, Product, Partner, Post } from '@prisma/client'
 import styles from '@/app/(blog)/admin/form.module.css'
 import layoutStyles from '@/app/layout.module.css'
-import { BackButton } from '@/components/BackButton'
+import { BackButton } from '@/components/features/BackButton'
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false })
 
