@@ -13,8 +13,8 @@ import { SocialSideBar } from '@/components/features/SocialSideBar';
 export const revalidate = 3600;
 
 export const metadata = {
-    title: 'Produtos Recomendados | Color Freak',
-    description: 'Confira nossa seleção de produtos recomendados para cabelos naturais ou quimicamente tratados.',
+    title: 'Produtos Recomendados | Blog Color Freak',
+    description: 'Confira nossa seleção de produtos recomendados para cronograma capilar, cabelos naturais ou quimicamente tratados.',
 };
 
 type PageProps = {

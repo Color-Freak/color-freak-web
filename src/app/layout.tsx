@@ -12,10 +12,10 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Color Freak | Cabelo Colorido, Descoloração e Cuidados Reais',
-    template: '%s | Color Freak'
+    default: 'Blog Color Freak | Cabelo Colorido, Descoloração e Cuidados Reais',
+    template: '%s | Blog Color Freak'
   },
-  description: 'Conteúdo técnico e real sobre cabelo natural, colorido, descolorido, cronograma capilar e cuidados que mantém os fios saudáveis.',
+  description: 'Conteúdo técnico e real sobre colorimetria capilar, cabelo natural, colorido, descolorido, cronograma capilar e cuidados que mantém os fios saudáveis.',
   robots: {
     index: true,
     follow: true,

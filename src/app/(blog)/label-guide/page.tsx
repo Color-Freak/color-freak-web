@@ -11,7 +11,7 @@ import { CallToAction } from '@/components/features/CallToAction';
 
 // 1. Otimização de SEO injetada direto pelo Next.js
 export const metadata: Metadata = {
-    title: 'Guia de Rótulos | Color Freak',
+    title: 'Guia de Rótulos | Blog Color Freak',
     description: 'Decifre o rótulo do seu cosmético. O guia prático para você entender o que está passando no cabelo e não ser mais enganada pelas embalagens.',
 };
 
