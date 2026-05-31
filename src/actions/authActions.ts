@@ -48,10 +48,8 @@ export async function handleLogin(prevState: LoginState, formData: FormData) {
 
 export async function handleLogout() {
   const cookieStore = await cookies();
-
-  // Destrói o token apagando o cookie
+  
   cookieStore.delete('color-freak-token');
 
-  // Redireciona de volta para a tela inicial ou de login
-  redirect('/');
+  redirect('/login');
 }
